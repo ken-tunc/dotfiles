@@ -1,0 +1,5 @@
+[user]
+	name = ken_tunc
+	email = tunc.adfuisses.53@gmail.com
+[merge]
+	tool = vimdiff
