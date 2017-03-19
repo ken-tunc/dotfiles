@@ -26,8 +26,20 @@ PROMPT='[%n@%m %1~]%(!.#.$) '
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '%F{green}(%b)%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f'
-precmd() { vcs_info }
 RPROMPT='[%~$vcs_info_msg_0_]'
+
+preexec() {
+  if [[ "$TERM" = "screen" ]]; then
+    echo -ne "\ek$1\e\\"
+  fi
+}
+
+precmd() {
+  vcs_info
+  if [[ "$TERM" = "screen" ]]; then
+    echo -ne "\ek$(basename $SHELL)\e\\"
+  fi
+}
 
 ## key bindings
 bindkey -e
