@@ -3,7 +3,7 @@ autodetach on
 defencoding utf-8
 defscrollback 10000
 escape ^Tt
-hardstatus alwayslastline "%-w%{= dW}%n %t%{-}%+w %= %y/%m/%d %c "
+hardstatus alwayslastline
+hardstatus string "%-w%{= dW}%n %t%{-}%+w %= %H %c %d-%M-%y "
 startup_message off
 termcapinfo xterm* ti@:te@
-vbell off
