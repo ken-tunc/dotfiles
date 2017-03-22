@@ -35,6 +35,7 @@ preexec() {
 }
 
 precmd() {
+  echo -ne "\033]0;\007"
   vcs_info
   if [[ "$TERM" = "screen" ]]; then
     echo -ne "\ek$(basename $SHELL)\e\\"
