@@ -1,12 +1,9 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'tomasr/molokai'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe', {
   \ 'do': './install.py --clang-completer --tern-completer' }
@@ -23,10 +20,10 @@ set encoding=utf-8
 """ UI
 set laststatus=2
 set mouse=a
-set noshowmode
 set number
 set showcmd
 set showmatch
+set ruler
 set wildmenu
 if has('nvim')
   set inccommand=split
@@ -68,6 +65,3 @@ let g:ycm_key_list_previous_completion = []
 let g:ycm_global_ycm_extra_conf =
   \ '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = 'python3'
-
-""" vim-airline
-let g:airline_theme = 'monochrome'
