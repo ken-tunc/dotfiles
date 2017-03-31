@@ -17,7 +17,11 @@ path=(
   "$GEM_HOME/bin"
   "$GOPATH/bin"
 )
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(
+  /usr/local/share/zsh-completions
+  ~/.local/share/zsh/site-functions
+  $fpath
+)
 
 ## prompts
 setopt prompt_subst
