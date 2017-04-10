@@ -1,5 +1,6 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
