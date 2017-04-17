@@ -15,6 +15,8 @@ main() {
   install_symlink ".vim"
   install_symlink ".vimrc"
   install_symlink ".zshrc"
+  install_symlink "Library/Application Support/Code/User/locale.json"
+  install_symlink "Library/Application Support/Code/User/settings.json"
 
   setup_vim
 }
