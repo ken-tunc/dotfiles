@@ -27,7 +27,9 @@ set showmatch
 set ruler
 set wildmenu
 if has('nvim')
+  set colorcolumn=81
   set inccommand=split
+  colorscheme molokai
 endif
 
 """ Search
