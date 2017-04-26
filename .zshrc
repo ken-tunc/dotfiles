@@ -90,6 +90,7 @@ autoload -Uz run-help run-help-git run-help-sudo
 ## misc
 setopt no_clobber
 setopt no_flow_control
+autoload -Uz edit-command-line
 
 # Apple Terminal
 if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
