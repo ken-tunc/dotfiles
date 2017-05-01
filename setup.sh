@@ -20,6 +20,9 @@ main() {
   install_symlink "Library/Application Support/Code/User/settings.json"
 
   setup_vim
+
+  # vscode
+  chmod 700 ~/Library/Application\ Support/Code
 }
 
 relative_path() {
@@ -32,7 +35,7 @@ relative_path() {
     /usr/bin/python -c \
       "from __future__ import print_function; import os; print(os.path.relative_path('$1'), end='')"
   else
-    echo "relative_path: Needs perl, ruby, or python." 1>&2
+    echo "$0: Needs perl, ruby, or python." 1>&2
     exit 1
   fi
 }
@@ -53,15 +56,18 @@ setup_vim() {
 
   # Override system vim
   local mvim_dir=/usr/local/bin
-  if [[ -x "$mvim_dir/mvim" ]]; then
-    local old_pwd="$(pwd)"
-    cd "$mvim_dir"
-    for cmd in vi vim vimdiff view vimex
-    do
+  local old_pwd="$(pwd)"
+
+  cd "$mvim_dir"
+  for cmd in vi vim vimdiff view vimex
+  do
+    if [[ -x "$mvim_dir/mvim" ]]; then
       ln -s mvim $cmd
-    done
-    cd "$old_pwd"
-  fi
+    else
+      [[ -L "$cmd" ]] && rm "$cmd"
+    fi
+  done
+  cd "$old_pwd"
 }
 
 main
