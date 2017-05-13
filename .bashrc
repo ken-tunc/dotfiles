@@ -22,8 +22,11 @@ HISTFILESIZE=2000
 shopt -s histappend
 
 # completion
-if [ -f /usr/local/etc/bash_completion ]; then
-  . /usr/local/etc/bash_completion
+if [ -d /usr/local/etc/bash_completion.d ]; then
+  for f in /usr/local/etc/bash_completion.d/*
+  do
+    . "$f"
+  done
 fi
 
 # aliases
