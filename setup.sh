@@ -5,6 +5,8 @@ DOTFILE_DIR="$(cd "$(dirname $0)" && pwd)"
 main() {
   cd "$DOTFILE_DIR"
 
+  install_symlink ".bash_profile"
+  install_symlink ".bashrc"
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
   install_symlink ".config/nvim"
