@@ -33,17 +33,13 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f'
 RPROMPT='[%~$vcs_info_msg_0_]'
 
 preexec() {
-  if [[ "$TERM" = "screen" ]]; then
-    echo -ne "\ek$1\e\\"
-  fi
+  [[ "$TERM" = "screen" ]] && echo -ne "\ek$1\e\\"
 }
 
 precmd() {
-  echo -ne "\033]0;\007"
+  [[ -z "$TMUX" ]] && echo -ne "\033]0;\007"
   vcs_info
-  if [[ "$TERM" = "screen" ]]; then
-    echo -ne "\ek$(basename $SHELL)\e\\"
-  fi
+  [[ "$TERM" = "screen" ]] && echo -ne "\ek$(basename $SHELL)\e\\"
 }
 
 ## key bindings
