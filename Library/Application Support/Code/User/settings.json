@@ -1,4 +1,5 @@
 {
     "editor.tabSize": 2,
-    "workbench.colorTheme": "Monokai"
+    "workbench.colorTheme": "Monokai",
+    "workbench.iconTheme": "vs-seti"
 }
