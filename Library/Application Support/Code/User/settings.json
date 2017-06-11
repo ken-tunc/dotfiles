@@ -12,6 +12,10 @@
         "editor.tabSize": 4
     },
 
+    // telemetry
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+
     // python
     "python.pythonPath": "/usr/local/bin/python3",
     "python.linting.pylintEnabled": false,
