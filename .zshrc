@@ -19,8 +19,8 @@ path=(
   "$GOPATH/bin"
 )
 fpath=(
-  /usr/local/share/zsh-completions
-  ~/.local/share/zsh/site-functions
+  "/usr/local/share/zsh-completions"
+  "$HOME/.local/share/zsh/site-functions"
   $fpath
 )
 
@@ -29,6 +29,7 @@ setopt prompt_subst
 PROMPT='[%n@%m %1~]%(!.#.$) '
 
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' formats '%F{green}(%b)%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f'
 RPROMPT='[%~$vcs_info_msg_0_]'
