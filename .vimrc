@@ -1,8 +1,9 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'tomasr/molokai'
