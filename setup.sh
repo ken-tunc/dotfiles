@@ -12,6 +12,7 @@ main() {
   install_symlink ".config/latexmk/latexmkrc"
   install_symlink ".config/nvim"
   install_symlink ".gvimrc"
+  install_symlink ".inputrc"
   install_symlink ".screenrc"
   install_symlink ".tern-config"
   install_symlink ".tmux.conf"
