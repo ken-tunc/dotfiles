@@ -1,9 +1,7 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
-Plug '/usr/local/opt/fzf'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'tomasr/molokai'
@@ -29,9 +27,7 @@ set showmatch
 set ruler
 set wildmenu
 if has('nvim')
-  set colorcolumn=81
   set inccommand=split
-  colorscheme molokai
 endif
 
 """ Search
@@ -39,6 +35,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set wrapscan
 
 """ Files
 set directory=~/Library/Caches/vim/swap
@@ -61,9 +58,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-""" UltiSnips
-let g:UltiSnipsUsePythonVersion = 2
 
 """ YouCompleteMe
 let g:ycm_key_invoke_completion = ''
