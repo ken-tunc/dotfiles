@@ -1,3 +1,5 @@
+autoload -Uz add-zsh-hook
+
 ## environment variables
 export CLICOLOR=1
 export EDITOR='vim'
@@ -26,23 +28,31 @@ fpath=(
 
 ## prompts
 setopt prompt_subst
-PROMPT='[%n@%m %1~]%(!.#.$) '
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats '%F{green}(%b)%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f'
-RPROMPT='[%~$vcs_info_msg_0_]'
+zstyle ':vcs_info:*' formats '%F{green}(%b)%f' '%u%c'
+zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f' '%F{red}[%a]%f%u%c'
+zstyle ':vcs_info:*' stagedstr "%F{yellow}[staged]%f"
+zstyle ':vcs_info:*' unstagedstr "%B%F{red}[unstaged]%f"
+zstyle ':vcs_info:*' check-for-changes true
 
 preexec() {
   [[ "$TERM" = "screen" ]] && echo -ne "\ek$1\e\\"
 }
 
-precmd() {
+update_prompt() {
   [[ -z "$TMUX" ]] && echo -ne "\033]0;\007"
   vcs_info
   [[ "$TERM" = "screen" ]] && echo -ne "\ek$(basename $SHELL)\e\\"
+
+  local host=""
+  [[ -n "$SSH_CONNECTION" ]] && host="@%m"
+  PROMPT="%n$host: %~ $vcs_info_msg_0_"$'\n'"%(!.#.$) "
+  RPROMPT="$vcs_info_msg_1_"
 }
+
+add-zsh-hook precmd update_prompt
 
 ## key bindings
 bindkey -e
@@ -111,7 +121,6 @@ if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
     printf '\e]7;%s\a' "$PWD_URL"
   }
 
-  autoload -Uz add-zsh-hook
   add-zsh-hook chpwd update_terminalapp_cwd
   update_terminalapp_cwd
 fi
