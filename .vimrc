@@ -1,13 +1,11 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'maralla/completor.vim', { 'do': 'make js' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
 Plug 'tomasr/molokai'
+Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', {
-  \ 'do': './install.py --clang-completer --tern-completer' }
 call plug#end()
 
 """ Edit
@@ -52,17 +50,5 @@ endfor
 """ Filetype recognition
 let g:tex_flavor = 'latex'
 
-""" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-""" YouCompleteMe
-let g:ycm_key_invoke_completion = ''
-let g:ycm_key_list_select_completion = []
-let g:ycm_key_list_previous_completion = []
-let g:ycm_global_ycm_extra_conf =
-  \ '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python3'
+""" completor.vim
+let g:completor_python_binary = '/usr/local/bin/python3'
