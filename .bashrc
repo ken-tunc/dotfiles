@@ -41,3 +41,7 @@ if [[ -n "$(type -t __git_ps1)" ]]; then
 fi
 PS1='\u'"$host"': \w\[\e[32m\]'"$vcs_info"'\[\e[0m\] \$ '
 unset host vcs_info
+
+# misc
+shopt -s checkjobs
+shopt -s globstar
