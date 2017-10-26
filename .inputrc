@@ -1,3 +1,10 @@
+set colored-stats on
 set completion-ignore-case on
 set menu-complete-display-prefix on
+set show-all-if-ambiguous on
 set skip-completed-text on
+
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+"\C-p": history-search-backward
+"\C-n": history-search-forward
