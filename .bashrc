@@ -8,7 +8,7 @@ export PAGER='less'
 export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
 export GOPATH=~/Library/Go
 
-PATH="~/.local/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 PATH+=":/usr/local/opt/python/libexec/bin"
 PATH+=":$(/usr/local/bin/python2 -c 'import site; print(site.getuserbase())')/bin"
 PATH+=":$(/usr/local/bin/python3 -c 'import site; print(site.getuserbase())')/bin"
