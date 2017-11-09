@@ -4,20 +4,7 @@
     "workbench.colorTheme": "Monokai",
     "workbench.iconTheme": "vs-seti",
 
-    "[python]": {
-        "editor.tabSize": 4
-    },
-    "[go]": {
-        "editor.insertSpaces": false,
-        "editor.tabSize": 4
-    },
-
     // telemetry
     "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-
-    // python
-    "python.pythonPath": "/usr/local/bin/python3",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true
+    "telemetry.enableCrashReporter": false
 }
