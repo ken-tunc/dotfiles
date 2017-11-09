@@ -1,20 +1,7 @@
-# environment variables
-export CLICOLOR=1
-export EDITOR='vim'
-export LANG='en_US.UTF-8'
-export LESS='iMR'
-export PAGER='less'
-
-export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
-export GOPATH=~/Library/Go
-
-PATH="$HOME/.local/bin:$PATH"
-PATH+=":/usr/local/opt/python/libexec/bin"
-PATH+=":$(/usr/local/bin/python2 -c 'import site; print(site.getuserbase())')/bin"
-PATH+=":$(/usr/local/bin/python3 -c 'import site; print(site.getuserbase())')/bin"
-PATH+=":$GEM_HOME/bin"
-PATH+=":$GOPATH/bin"
-export PATH
+case $- in
+  *i*) ;;
+  *) return;;
+esac
 
 # history
 HISTCONTROL=ignoreboth
@@ -23,13 +10,12 @@ HISTFILESIZE=2000
 shopt -s histappend
 
 # completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[[ -f /usr/local/etc/bash_completion ]] && . /usr/local/etc/bash_completion
 
 # aliases
+alias grep='grep --color=auto'
 alias la='ls -A'
 alias ll='ls -lh'
-alias lla='ls -lAh'
-alias grep='grep --color=auto'
 
 # prompt
 host=""
@@ -44,4 +30,5 @@ unset host vcs_info
 
 # misc
 shopt -s checkjobs
+shopt -s checkwinsize
 shopt -s globstar
