@@ -1,6 +1,8 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'majutsushi/tagbar'
 Plug 'maralla/completor.vim', { 'do': 'make js' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tomasr/molokai'
