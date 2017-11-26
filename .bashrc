@@ -29,6 +29,6 @@ PS1='\u'"$host"': \w\[\e[32m\]'"$vcs_info"'\[\e[0m\] \$ '
 unset host vcs_info
 
 # misc
-shopt -s checkjobs
-shopt -s checkwinsize
-shopt -s globstar
+shopt | grep -q checkjobs && shopt -s checkjobs
+shopt | grep -q checkwinsize && shopt -s checkwinsize
+shopt | grep -q globstar && shopt -s globstar
