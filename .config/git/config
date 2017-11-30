@@ -1,5 +1,8 @@
 [user]
 	name = ken_tunc
 	email = tunc.adfuisses.53@gmail.com
+	signingkey = E76DCB6D3B5A58E0
 [merge]
 	tool = vimdiff
+[commit]
+	gpgsign = true

@@ -1,3 +1,18 @@
+# environment variables
+export CLICOLOR=1
+export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
+export GPG_TTY="$(tty)"
+
+path="$HOME/.local/bin"
+path+=":/usr/local/opt/python/libexec/bin"
+path+=":$PATH"
+path+=":$(/usr/local/bin/python2 -c 'import site; print(site.getuserbase())')/bin"
+path+=":$(/usr/local/bin/python3 -c 'import site; print(site.getuserbase())')/bin"
+path+=":$GEM_HOME/bin"
+path+=":$GOPATH/bin"
+export PATH="$path"
+unset path
+
 case $- in
   *i*) ;;
   *) return;;
