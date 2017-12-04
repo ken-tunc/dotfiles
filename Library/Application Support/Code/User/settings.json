@@ -7,7 +7,6 @@
     // telemetry
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "python.linting.enabledWithoutWorkspace": false,
 
     // python
     "[python]": {
