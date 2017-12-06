@@ -18,6 +18,7 @@ main() {
   install_symlink ".gnupg/gpg-agent.conf"
   install_symlink ".gvimrc"
   install_symlink ".inputrc"
+  install_symlink ".npmrc"
   install_symlink ".screenrc"
   install_symlink ".tern-config"
   install_symlink ".tmux.conf"
