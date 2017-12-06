@@ -1,3 +1,8 @@
+case $- in
+  *i*) ;;
+  *) return;;
+esac
+
 # environment variables
 export CLICOLOR=1
 export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
@@ -12,11 +17,6 @@ path+=":$GEM_HOME/bin"
 path+=":$GOPATH/bin"
 export PATH="$path"
 unset path
-
-case $- in
-  *i*) ;;
-  *) return;;
-esac
 
 # history
 HISTCONTROL=ignoreboth
@@ -44,6 +44,6 @@ PS1='\u'"$host"': \w\[\e[32m\]'"$vcs_info"'\[\e[0m\] \$ '
 unset host vcs_info
 
 # misc
-shopt | grep -q checkjobs && shopt -s checkjobs
-shopt | grep -q checkwinsize && shopt -s checkwinsize
-shopt | grep -q globstar && shopt -s globstar
+shopt -s checkjobs
+shopt -s checkwinsize
+shopt -s globstar
