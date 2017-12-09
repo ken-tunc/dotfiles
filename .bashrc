@@ -33,15 +33,17 @@ alias la='ls -A'
 alias ll='ls -lh'
 
 # prompt
-host=""
-vcs_info=""
-[[ -n $SSH_CONNECTION ]] && host="@\h"
+PS1='\u'
+if [[ -n "$SSH_CONNECTION" ]]; then
+  PS1+='@\h'
+fi
+PS1+=': \w'
 if [[ -n "$(type -t __git_ps1)" ]]; then
   GIT_PS1_SHOWDIRTYSTATE=1
-  vcs_info='$(__git_ps1 " (%s)")'
+  GIT_PS1_SHOWSTASHSTATE=1
+  PS1+='\[\e[32m\]$(__git_ps1 " (%s)")\[\e[0m\]'
 fi
-PS1='\u'"$host"': \w\[\e[32m\]'"$vcs_info"'\[\e[0m\] \$ '
-unset host vcs_info
+PS1+=' \$ '
 
 # misc
 shopt -s checkjobs
