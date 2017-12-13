@@ -1,3 +1,15 @@
+""" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'majutsushi/tagbar'
+Plug 'maralla/completor.vim', { 'do': 'make js' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tomasr/molokai'
+Plug 'w0rp/ale'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+call plug#end()
+
 """ Edit
 set expandtab
 set shiftwidth=2
@@ -5,7 +17,6 @@ set softtabstop=2
 set autoindent
 set backspace=indent,eol,start
 set encoding=utf-8
-filetype plugin indent on
 
 """ UI
 set laststatus=2
@@ -18,7 +29,6 @@ set wildmenu
 if has('nvim')
   set inccommand=split
 endif
-syntax enable
 
 """ Search
 set hlsearch
@@ -41,3 +51,7 @@ endfor
 
 """ Filetype recognition
 let g:tex_flavor = 'latex'
+
+""" completor.vim
+let g:completor_auto_close_doc = 0
+let g:completor_python_binary = '/usr/local/bin/python3'
