@@ -24,6 +24,8 @@ main() {
   install_symlink ".tmux.conf"
   install_symlink ".vim"
   install_symlink ".vimrc"
+  install_symlink ".zshenv"
+  install_symlink ".zshrc"
   install_symlink "Library/Application Support/pip/pip.conf"
   install_symlink "Library/Application Support/Code/User/locale.json"
   install_symlink "Library/Application Support/Code/User/settings.json"
