@@ -54,4 +54,4 @@ let g:tex_flavor = 'latex'
 
 """ completor.vim
 let g:completor_auto_close_doc = 0
-let g:completor_python_binary = '/usr/local/bin/python3'
+let g:completor_python_binary = exepath('python3')
