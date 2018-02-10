@@ -5,6 +5,7 @@ let $PATH=matchstr(s:path, 'VIMPATH\zs.\{-}\ze\n')
 set lines=40
 set columns=120
 set colorcolumn=80
+set confirm
 set guifont=Monaco:h13
 set guioptions-=r
 set guioptions-=L
