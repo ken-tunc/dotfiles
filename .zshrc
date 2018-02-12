@@ -126,3 +126,23 @@ if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
   add-zsh-hook chpwd update_terminalapp_cwd
   update_terminalapp_cwd
 fi
+
+# fzf
+if [[ -x /usr/local/bin/fzf ]]; then
+  if [[ $- == *i* ]] & [[ -f /usr/local/opt/fzf/shell/completion.zsh ]]; then
+    source /usr/local/opt/fzf/shell/completion.zsh
+  fi
+
+  if [[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
+    source /usr/local/opt/fzf/shell/key-bindings.zsh
+    # Override key bindings
+    bindkey -r '\ec'
+    bindkey -r '^T'
+    bindkey '^O' fzf-file-widget
+  fi
+
+  fcd() {
+    local dir
+    dir="$(mdfind kind:folder -onlyin "${1:-/}" -name 2> /dev/null | fzf-tmux +m)" && cd "$dir"
+  }
+fi
