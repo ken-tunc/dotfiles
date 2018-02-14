@@ -66,19 +66,9 @@ endfor
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-""" Commands
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
-
-if executable('ag')
-  " :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
-  " :Ag! - Start fzf in fullscreen and display the preview window above
-  command! -bang -nargs=* Ag
-    \ call fzf#vim#ag(<q-args>,
-    \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-    \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \                 <bang>0)
-endif
+let mapleader = "\<Space>"
+nnoremap <leader>yt :YcmCompleter GoTo<CR>
+nnoremap <leader>yd :YcmCompleter GetDoc<CR>
 
 """ Filetype recognition
 let g:tex_flavor = 'latex'
