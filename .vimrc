@@ -1,6 +1,7 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
