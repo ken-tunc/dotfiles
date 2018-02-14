@@ -32,7 +32,6 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f' '%F{red}[%a]%f%u%c'
 zstyle ':vcs_info:*' stagedstr "%F{yellow}[staged]%f"
 zstyle ':vcs_info:*' unstagedstr "%B%F{red}[unstaged]%f"
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':completion:*:*:docker:*' option-stacking yes
 
 preexec() {
   [[ "$TERM" = "screen" ]] && echo -ne "\ek$1\e\\"
@@ -57,11 +56,6 @@ update_prompt() {
 
 add-zsh-hook precmd update_prompt
 
-## key bindings
-bindkey -e
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
-
 ## history
 [[ -z $HISTFILE ]] && HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -82,6 +76,7 @@ setopt magic_equal_subst
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit
 
@@ -96,12 +91,40 @@ alias ll='ls -lh'
 alias lla='ls -lAh'
 alias grep='grep --color=auto'
 unalias run-help
-autoload -Uz run-help run-help-git run-help-sudo
+
+## key bindings
+if [[ -x /usr/local/bin/fzf ]] && [[ $- == *i* ]]; then
+  source /usr/local/opt/fzf/shell/completion.zsh
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+
+  autoload -Uz run-help run-help-git run-help-sudo run-help openssl
+  autoload -Uz edit-command-line && zle -N edit-command-line
+  bindkey -d
+  bindkey -v
+  bindkey -v \
+    '^A' beginning-of-line \
+    '^E' end-of-line \
+    '^B' backward-char \
+    '^F' forward-char \
+    '^D' delete-char-or-list \
+    '^K' kill-line \
+    '^R' history-incremental-search-backward \
+    '^S' history-incremental-search-forward \
+    '^P' history-beginning-search-backward \
+    '^N' history-beginning-search-forward \
+    '^I' fzf-completion \
+    '^O' fzf-cd-widget \
+    '^?' backward-delete-char \
+    '^X^F' fzf-file-widget \
+    '^X^H' fzf-history-widget
+  bindkey -a \
+    'K' run-help \
+    '!' edit-command-line
+fi
 
 ## misc
 setopt no_clobber
 setopt no_flow_control
-autoload -Uz edit-command-line
 
 # Apple Terminal
 if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
@@ -126,24 +149,4 @@ if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
 
   add-zsh-hook chpwd update_terminalapp_cwd
   update_terminalapp_cwd
-fi
-
-# fzf
-if [[ -x /usr/local/bin/fzf ]]; then
-  if [[ $- == *i* ]] & [[ -f /usr/local/opt/fzf/shell/completion.zsh ]]; then
-    source /usr/local/opt/fzf/shell/completion.zsh
-  fi
-
-  if [[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
-    # Override key bindings
-    bindkey -r '\ec'
-    bindkey -r '^T'
-    bindkey '^O' fzf-file-widget
-  fi
-
-  fcd() {
-    local dir
-    dir="$(mdfind kind:folder -onlyin "${1:-/}" -name 2> /dev/null | fzf-tmux +m)" && cd "$dir"
-  }
 fi
