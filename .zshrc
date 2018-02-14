@@ -32,6 +32,7 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f' '%F{red}[%a]%f%u%c'
 zstyle ':vcs_info:*' stagedstr "%F{yellow}[staged]%f"
 zstyle ':vcs_info:*' unstagedstr "%B%F{red}[unstaged]%f"
 zstyle ':vcs_info:*' check-for-changes true
+zstyle ':completion:*:*:docker:*' option-stacking yes
 
 preexec() {
   [[ "$TERM" = "screen" ]] && echo -ne "\ek$1\e\\"

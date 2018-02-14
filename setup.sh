@@ -31,6 +31,9 @@ main() {
   install_symlink "Library/Application Support/Code/User/settings.json"
   install_symlink "Library/LaunchAgents/org.gnupg.gpg-agent.plist"
 
+  # Download completion functions
+  download_function "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker"
+
   setup_vim
 
   # vscode
@@ -70,6 +73,12 @@ install_symlink() {
   cd "$dir"
   ln -s "$(relative_path "$DOTFILE_DIR/$1")" .
   cd "$old_pwd"
+}
+
+download_function() {
+  local fname="$(basename "$1")"
+  local dist="$HOME/.local/share/zsh/site-functions/$fname"
+  curl -fLo "$dist" --create-dirs "$1"
 }
 
 setup_vim() {
