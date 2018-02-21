@@ -30,6 +30,7 @@ set encoding=utf-8
 
 """ UI
 set laststatus=2
+set lazyredraw
 set mouse=a
 set noshowmode
 set number
