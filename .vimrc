@@ -67,10 +67,6 @@ endfor
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-let mapleader = "\<Space>"
-nnoremap <leader>yt :YcmCompleter GoTo<CR>
-nnoremap <leader>yd :YcmCompleter GetDoc<CR>
-
 """ Filetype recognition
 let g:tex_flavor = 'latex'
 
