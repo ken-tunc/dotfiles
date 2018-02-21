@@ -5,50 +5,86 @@ DOTFILE_DIR="$(cd "$(dirname $0)" && pwd)"
 main() {
   cd "$DOTFILE_DIR"
 
-  # Should be called first.
   setup_gpg
-
-  install_symlink ".bash_profile"
-  install_symlink ".bashrc"
-  install_symlink ".config/git/config"
-  install_symlink ".config/git/ignore"
-  install_symlink ".config/latexmk/latexmkrc"
-  install_symlink ".config/nvim"
-  install_symlink ".gnupg/gpg.conf"
-  install_symlink ".gnupg/gpg-agent.conf"
-  install_symlink ".gvimrc"
-  install_symlink ".inputrc"
-  install_symlink ".npmrc"
-  install_symlink ".screenrc"
-  install_symlink ".tern-config"
-  install_symlink ".tmux.conf"
-  install_symlink ".vim"
-  install_symlink ".vimrc"
-  install_symlink ".zshenv"
-  install_symlink ".zshrc"
-  install_symlink "Library/Application Support/pip/pip.conf"
-  install_symlink "Library/Application Support/Code/User/locale.json"
-  install_symlink "Library/Application Support/Code/User/settings.json"
-  install_symlink "Library/LaunchAgents/org.gnupg.gpg-agent.plist"
+  setup_shell
+  setup_vim
+  setup_misc
 
   # Download completion functions
   download_function "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker"
-
-  setup_vim
-
-  # vscode
-  chmod 700 ~/Library/Application\ Support/Code
 }
 
 setup_gpg() {
   if [[ ! -d ~/.gnupg ]]; then
     mkdir ~/.gnupg
-    chmod 700 ~/.gnupg
   fi
+  chmod 700 ~/.gnupg
 
   chmod 700 "$DOTFILE_DIR/.gnupg"
   chmod 600 "$DOTFILE_DIR/.gnupg/gpg.conf"
   chmod 600 "$DOTFILE_DIR/.gnupg/gpg-agent.conf"
+
+  install_symlink ".gnupg/gpg.conf"
+  install_symlink ".gnupg/gpg-agent.conf"
+}
+
+setup_shell() {
+  install_symlink ".bash_profile"
+  install_symlink ".bashrc"
+  install_symlink ".inputrc"
+  install_symlink ".zshenv"
+  install_symlink ".zshrc"
+}
+
+setup_vim() {
+  # Install vim-plug
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  # Override system vim
+  local mvim_dir=/usr/local/bin
+  local old_pwd="$(pwd)"
+  cd "$mvim_dir"
+  for cmd in vi vim vimdiff view vimex
+  do
+    if [[ -x "$mvim_dir/mvim" ]]; then
+      ln -s mvim $cmd
+    else
+      [[ -L "$cmd" ]] && rm "$cmd"
+    fi
+  done
+  cd "$old_pwd"
+
+  install_symlink ".config/nvim"
+  install_symlink ".gvimrc"
+  install_symlink ".vim"
+  install_symlink ".vimrc"
+
+  # Install dependencies
+  brew update && brew install \
+    cmake \
+    ctags \
+    fzf \
+    node
+
+  vim +PlugUpdate +qall
+}
+
+setup_misc() {
+  install_symlink ".config/git/config"
+  install_symlink ".config/git/ignore"
+  install_symlink ".config/latexmk/latexmkrc"
+  install_symlink ".npmrc"
+  install_symlink ".screenrc"
+  install_symlink ".tern-config"
+  install_symlink ".tmux.conf"
+  install_symlink "Library/Application Support/pip/pip.conf"
+  install_symlink "Library/Application Support/Code/User/locale.json"
+  install_symlink "Library/Application Support/Code/User/settings.json"
+  install_symlink "Library/LaunchAgents/org.gnupg.gpg-agent.plist"
+
+  # vscode
+  chmod 700 ~/Library/Application\ Support/Code
 }
 
 relative_path() {
@@ -79,27 +115,6 @@ download_function() {
   local fname="$(basename "$1")"
   local dist="$HOME/.local/share/zsh/site-functions/$fname"
   curl -fLo "$dist" --create-dirs "$1"
-}
-
-setup_vim() {
-  # Install vim-plug
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-  # Override system vim
-  local mvim_dir=/usr/local/bin
-  local old_pwd="$(pwd)"
-
-  cd "$mvim_dir"
-  for cmd in vi vim vimdiff view vimex
-  do
-    if [[ -x "$mvim_dir/mvim" ]]; then
-      ln -s mvim $cmd
-    else
-      [[ -L "$cmd" ]] && rm "$cmd"
-    fi
-  done
-  cd "$old_pwd"
 }
 
 main
