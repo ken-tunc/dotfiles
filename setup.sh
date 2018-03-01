@@ -10,8 +10,7 @@ main() {
   setup_vim
   setup_misc
 
-  # Download completion functions
-  download_function "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker"
+  install_deps
 }
 
 setup_gpg() {
@@ -27,7 +26,6 @@ setup_gpg() {
   install_symlink ".gnupg/gpg.conf"
   install_symlink ".gnupg/gpg-agent.conf"
 }
-
 setup_shell() {
   install_symlink ".bash_profile"
   install_symlink ".bashrc"
@@ -59,15 +57,6 @@ setup_vim() {
   install_symlink ".gvimrc"
   install_symlink ".vim"
   install_symlink ".vimrc"
-
-  # Install dependencies
-  brew update && brew install \
-    cmake \
-    ctags \
-    fzf \
-    node
-
-  vim +PlugUpdate +qall
 }
 
 setup_misc() {
@@ -85,6 +74,17 @@ setup_misc() {
 
   # vscode
   chmod 700 ~/Library/Application\ Support/Code
+}
+
+install_deps() {
+  brew update && brew install \
+    cmake \
+    ctags \
+    fzf \
+    node \
+    zsh-completions
+
+  vim +PlugUpdate +qall
 }
 
 relative_path() {
@@ -109,12 +109,6 @@ install_symlink() {
   cd "$dir"
   ln -s "$(relative_path "$DOTFILE_DIR/$1")" .
   cd "$old_pwd"
-}
-
-download_function() {
-  local fname="$(basename "$1")"
-  local dist="$HOME/.local/share/zsh/site-functions/$fname"
-  curl -fLo "$dist" --create-dirs "$1"
 }
 
 main
