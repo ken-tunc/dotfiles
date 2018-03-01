@@ -30,7 +30,7 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' formats '%F{green}(%b)%f' '%u%c'
 zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f' '%F{red}[%a]%f%u%c'
 zstyle ':vcs_info:*' stagedstr "%F{yellow}[staged]%f"
-zstyle ':vcs_info:*' unstagedstr "%B%F{red}[unstaged]%f"
+zstyle ':vcs_info:*' unstagedstr "%F{red}[unstaged]%f"
 zstyle ':vcs_info:*' check-for-changes true
 
 preexec() {
@@ -48,7 +48,7 @@ update_prompt() {
   fi
   prompt_str+=": %~"
   if [[ -n "$vcs_info_msg_0_" ]]; then
-    prompt_str+="$vcs_info_msg_0_%b"
+    prompt_str+="$vcs_info_msg_0_"
   fi
   PROMPT="$prompt_str %(!.#.$) "
   RPROMPT="$vcs_info_msg_1_"
@@ -125,6 +125,10 @@ fi
 ## misc
 setopt no_clobber
 setopt no_flow_control
+
+if [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # Apple Terminal
 if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then

@@ -82,7 +82,8 @@ install_deps() {
     ctags \
     fzf \
     node \
-    zsh-completions
+    zsh-completions \
+    zsh-syntax-highlighting
 
   vim +PlugUpdate +qall
 }
