@@ -74,11 +74,7 @@ let g:tex_flavor = 'latex'
 """ vim-airline
 let g:airline_theme = 'minimalist'
 
-""" UltiSnips
-let g:UltiSnipsUsePythonVersion = 2
-
 """ YouCompleteMe
 let g:ycm_key_invoke_completion = ''
 let g:ycm_key_list_select_completion = []
 let g:ycm_key_list_previous_completion = []
-let g:ycm_python_binary_path = 'python3'
