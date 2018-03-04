@@ -1,5 +1,6 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -71,6 +72,9 @@ cnoremap <C-n> <Down>
 
 """ Filetype recognition
 let g:tex_flavor = 'latex'
+
+""" vim-javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 """ vim-airline
 let g:airline_theme = 'minimalist'
