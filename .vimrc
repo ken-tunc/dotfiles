@@ -41,7 +41,9 @@ set wildmenu
 if has('nvim')
   set inccommand=split
 endif
-colorscheme molokai
+if $TERM =~ ".*-256color"
+  colorscheme molokai
+endif
 
 """ Search
 set hlsearch
