@@ -8,8 +8,9 @@ export GPG_TTY="$(tty)"
 typeset -U path
 path=(
   "$HOME/.local/bin"
+  /usr/local/opt/python/libexec/bin
   $path
-  "$(/usr/local/bin/python -c 'import site; print(site.getuserbase())')/bin"
+  "$(/usr/local/bin/python3 -c 'import site; print(site.getuserbase())')/bin"
   "$GEM_HOME/bin"
   "$GOPATH/bin"
   "$(/usr/local/bin/npm prefix -g)/bin"
