@@ -7,3 +7,4 @@ set guioptions-=r
 set guioptions-=L
 set confirm
 set transparency=15
+colorscheme molokai
