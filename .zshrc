@@ -45,12 +45,12 @@ update_prompt() {
   if [[ -n "$SSH_CONNECTION" ]]; then
     prompt_str+="@%m"
   fi
-  prompt_str+=": %~"
+  prompt_str+=": %F{blue}%~%f"
   if [[ -n "$vcs_info_msg_0_" ]]; then
     prompt_str+="$vcs_info_msg_0_"
   fi
-  PROMPT="$prompt_str %(!.#.$) "
-  RPROMPT="$vcs_info_msg_1_"
+  PROMPT="%B$prompt_str%b %(?..%F{red})%(!.#.$)%f "
+  RPROMPT="%B$vcs_info_msg_1_%b"
 }
 
 add-zsh-hook precmd update_prompt
