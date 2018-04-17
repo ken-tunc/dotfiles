@@ -7,10 +7,16 @@ main() {
 
   setup_gpg
   setup_shell
+  setup_tex
   setup_vim
   setup_misc
 
   install_deps
+}
+
+abort() {
+  echo "$1" 1>&2
+  exit 1
 }
 
 setup_gpg() {
@@ -26,12 +32,32 @@ setup_gpg() {
   install_symlink ".gnupg/gpg.conf"
   install_symlink ".gnupg/gpg-agent.conf"
 }
+
 setup_shell() {
   install_symlink ".bash_profile"
   install_symlink ".bashrc"
   install_symlink ".inputrc"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
+}
+
+setup_tex() {
+  if ! command -v tlmgr >/dev/null 2>&1; then
+    abort "$0: tlmgr is required."
+  fi
+
+  sudo tlmgr update --self --all
+
+  if [[ -d "$(kpsewhich -var-value=TEXMFHOME)" ]]; then
+    return 0
+  fi
+
+  tlmgr init-usertree
+  sudo tlmgr paper a4
+
+  sudo tlmgr install \
+    collection-langjapanese \
+    latexmk
 }
 
 setup_vim() {
@@ -81,6 +107,7 @@ install_deps() {
     cmake \
     ctags \
     fzf \
+    ghostscript \
     node \
     zsh-completions \
     zsh-syntax-highlighting
@@ -89,17 +116,16 @@ install_deps() {
 }
 
 relative_path() {
-  if [[ -x /usr/bin/perl ]]; then
-    /usr/bin/perl -e "use File::Spec; print File::Spec->abs2rel('$1')"
-  elif [[ -x /usr/bin/ruby ]]; then
-    /usr/bin/ruby -e \
+  if command -v perl >/dev/null 2>&1; then
+    perl -e "use File::Spec; print File::Spec->abs2rel('$1')"
+  elif command -v ruby >/dev/null 2>&1; then
+    ruby -e \
       "require 'pathname'; print(Pathname.new('$1').relative_path_from(Pathname.new('$(pwd)')))"
-  elif [[ -x /usr/bin/python ]]; then
-    /usr/bin/python -c \
+  elif command -v python >/dev/null 2>&1; then
+    python -c \
       "from __future__ import print_function; import os; print(os.path.relative_path('$1'), end='')"
   else
-    echo "$0: Needs perl, ruby, or python." 1>&2
-    exit 1
+    abort "$0: Needs perl, ruby, or python."
   fi
 }
 
