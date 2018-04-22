@@ -1,7 +1,3 @@
-" syntastic
-let g:syntastic_quiet_messages = { "level": "warnings" }
-let g:syntastic_tex_checkers = ['chktex']
-
 " vimtex
 let g:vimtex_latexmk_options = '-pdfdvi'
 
