@@ -32,14 +32,9 @@ zstyle ':vcs_info:*' stagedstr "%F{yellow}[staged]%f"
 zstyle ':vcs_info:*' unstagedstr "%F{red}[unstaged]%f"
 zstyle ':vcs_info:*' check-for-changes true
 
-preexec() {
-  [[ "$TERM" = "screen" ]] && echo -ne "\ek$1\e\\"
-}
-
 update_prompt() {
   [[ -z "$TMUX" ]] && echo -ne "\033]0;\007"
   vcs_info
-  [[ "$TERM" = "screen" ]] && echo -ne "\ek$(basename $SHELL)\e\\"
 
   local prompt_str="%n"
   if [[ -n "$SSH_CONNECTION" ]]; then
