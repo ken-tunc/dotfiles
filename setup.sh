@@ -89,6 +89,7 @@ setup_misc() {
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
   install_symlink ".config/latexmk/latexmkrc"
+  install_symlink ".ideavimrc"
   install_symlink ".npmrc"
   install_symlink ".screenrc"
   install_symlink ".tern-config"

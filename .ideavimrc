@@ -1,0 +1,25 @@
+" Emulated plugins
+set surround
+
+" Replace with IDE's functions
+nnoremap K :action QuickJavaDoc<CR>
+nnoremap / :action Find<CR>
+nnoremap ? :action FindUsages<CR>
+nnoremap n :action FindNext<CR>
+nnoremap N :action FindPrevious<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :acition Foward<CR>
+nnoremap g; :action JumpToLastChange<CR>
+nnoremap g, :action JumpToNextChange<CR>
+
+" Easy access to IDE's functions
+let mapleader = ","
+nnoremap <Leader>b :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>r :action Run<CR>
+nnoremap <Leader>d :action Debug<CR>
+nnoremap <Leader>= :action ReformatCode<CR>
+nnoremap <Leader>t :action ActivateTerminalToolWindow<CR>
+
+nnoremap <Leader>N :action NewElement<CR>
+nnoremap <Leader>R :action Refactorings.QuickListPopupAction<CR>
+nnoremap <Leader>G :action Generate<CR>
