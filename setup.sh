@@ -94,7 +94,6 @@ setup_misc() {
   install_symlink ".screenrc"
   install_symlink ".tern-config"
   install_symlink ".tmux.conf"
-  install_symlink "Library/Application Support/pip/pip.conf"
   install_symlink "Library/Application Support/Code/User/locale.json"
   install_symlink "Library/Application Support/Code/User/settings.json"
   install_symlink "Library/LaunchAgents/org.gnupg.gpg-agent.plist"
