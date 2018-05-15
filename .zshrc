@@ -22,6 +22,16 @@ fpath=(
   $fpath
 )
 
+## directories
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushd_minus
+
+autoload -Uz chpwd_recent_dirs cdr
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ":chpwd:*" recent-dirs-max 500
+zstyle ":chpwd:*" recent-dirs-default true
+
 ## prompts
 setopt prompt_subst
 
@@ -71,14 +81,10 @@ setopt magic_equal_subst
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' recent-dirs-insert fallback
 zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit
-
-## directories
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushd_minus
 
 ## aliases
 alias la='ls -A'
