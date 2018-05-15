@@ -18,6 +18,7 @@ path=(
 )
 fpath=(
   "/usr/local/share/zsh-completions"
+  "$HOME/.local/share/zsh/site-functions"
   $fpath
 )
 
@@ -87,33 +88,22 @@ alias grep='grep --color=auto'
 unalias run-help
 
 ## key bindings
-if [[ -x /usr/local/bin/fzf ]] && [[ $- == *i* ]]; then
-  source /usr/local/opt/fzf/shell/completion.zsh
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
+autoload -Uz run-help run-help-git run-help-sudo run-help openssl
+autoload -Uz edit-command-line && zle -N edit-command-line
+bindkey -e
+bindkey -e \
+  '^P' history-beginning-search-backward \
+  '^N' history-beginning-search-forward
 
-  autoload -Uz run-help run-help-git run-help-sudo run-help openssl
-  autoload -Uz edit-command-line && zle -N edit-command-line
-  bindkey -d
-  bindkey -v
-  bindkey -v \
-    '^A' beginning-of-line \
-    '^E' end-of-line \
-    '^B' backward-char \
-    '^F' forward-char \
-    '^D' delete-char-or-list \
-    '^K' kill-line \
-    '^R' history-incremental-search-backward \
-    '^S' history-incremental-search-forward \
-    '^P' history-beginning-search-backward \
-    '^N' history-beginning-search-forward \
-    '^I' fzf-completion \
+if [[ -x /usr/local/bin/fzf ]]; then
+  autoload -Uz fzf-cd-widget && zle -N fzf-cd-widget
+  autoload -Uz fzf-file-widget && zle -N fzf-file-widget
+  autoload -Uz fzf-history-widget && zle -N fzf-history-widget
+  bindkey -e \
     '^O' fzf-cd-widget \
-    '^?' backward-delete-char \
     '^X^F' fzf-file-widget \
-    '^X^H' fzf-history-widget
-  bindkey -a \
-    'K' run-help \
-    '!' edit-command-line
+    '^X^R' fzf-history-widget
+  source /usr/local/opt/fzf/shell/completion.zsh
 fi
 
 ## misc
@@ -149,8 +139,4 @@ fi
 if [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
-fi
-
-if [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi

@@ -1,0 +1,16 @@
+# vim:set et sw=2 ts=8 ft=zsh:
+
+local cmd="command find -L .  \\( -path '*/\\.*' \
+  -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' -o -fstype 'sysfs' \
+  \\) -prune -o -type f -print -o -type d -print -o -type l -print \
+  2> /dev/null | cut -b3-"
+
+setopt localoptions pipefail 2> /dev/null
+eval "$cmd | fzf-tmux --reverse --height 40% -m" | while read item; do
+  LBUFFER+="$(echo -n "${(q)item} ")"
+done
+local ret=$?
+
+zle redisplay
+typeset -f zle-line-init >/dev/null && zle zle-line-init
+return $ret

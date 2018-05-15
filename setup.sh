@@ -37,6 +37,7 @@ setup_shell() {
   install_symlink ".bash_profile"
   install_symlink ".bashrc"
   install_symlink ".inputrc"
+  install_symlink ".local/share/zsh/site-functions"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
 }

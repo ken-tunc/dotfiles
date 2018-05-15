@@ -1,0 +1,16 @@
+# vim:set et sw=2 ts=8 ft=zsh:
+
+local selected num
+setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
+selected=( $(fc -rl 1 | fzf-tmux --height 40% -n2..,.. --tiebreak=index \
+  --bind=ctrl-r:toggle-sort --query="$LBUFFER" +m) )
+local ret=$?
+if [ -n "$selected" ]; then
+  num=$selected[1]
+  if [ -n "$num" ]; then
+    zle vi-fetch-history -n $num
+  fi
+fi
+zle redisplay
+typeset -f zle-line-init >/dev/null && zle zle-line-init
+return $ret
