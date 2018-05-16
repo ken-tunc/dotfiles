@@ -44,7 +44,6 @@ zstyle ':vcs_info:*' unstagedstr "%F{red}[unstaged]%f"
 zstyle ':vcs_info:*' check-for-changes true
 
 update_prompt() {
-  [[ -z "$TMUX" ]] && echo -ne "\033]0;\007"
   vcs_info
 
   local prompt_str="%n"
