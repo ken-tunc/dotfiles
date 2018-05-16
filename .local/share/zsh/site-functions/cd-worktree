@@ -1,0 +1,19 @@
+# vim:set et sw=2 ts=8 ft=zsh:
+
+if ! command -v fzf >/dev/null 2>&1; then
+  echo "fzf not installed" 1>&2
+  return 1
+fi
+
+if ! git rev-parse >/dev/null 2>&1; then
+  echo "Not a git repository" 1>&2
+  return 1
+fi
+
+local cmd="command git worktree list 2>/dev/null"
+local dir="$(eval "$cmd" | fzf-tmux +m --reverse --height 40% | awk '{print $1}')"
+if [[ -z "$dir" ]]; then
+  return 1
+fi
+
+cd "$dir"

@@ -114,6 +114,7 @@ fi
 ## misc
 setopt no_clobber
 setopt no_flow_control
+autoload -Uz cd-worktree
 
 # Apple Terminal
 if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
