@@ -77,10 +77,14 @@ setopt auto_menu
 setopt correct
 setopt list_packed
 setopt magic_equal_subst
+zmodload -i zsh/complist
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' recent-dirs-insert fallback
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit
@@ -99,6 +103,7 @@ bindkey -e
 bindkey -e \
   '^P' history-beginning-search-backward \
   '^N' history-beginning-search-forward
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 if [[ -x /usr/local/bin/fzf ]]; then
   autoload -Uz fzf-cd-widget && zle -N fzf-cd-widget
