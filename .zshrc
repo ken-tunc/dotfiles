@@ -37,25 +37,22 @@ setopt prompt_subst
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats '%F{green}(%b)%f' '%u%c'
-zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f' '%F{red}[%a]%f%u%c'
-zstyle ':vcs_info:*' stagedstr "%F{yellow}[staged]%f"
-zstyle ':vcs_info:*' unstagedstr "%F{red}[unstaged]%f"
-zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats '%F{green}(%b)%f%u%c'
+zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f%u%c' '%F{red}[%a]%f%u%c'
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}[staged]%f"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}[unstaged]%f"
+zstyle ':vcs_info:git:*' check-for-changes true
 
 update_prompt() {
-  vcs_info
-
   local prompt_str="%n"
   if [[ -n "$SSH_CONNECTION" ]]; then
     prompt_str+="@%m"
   fi
   prompt_str+=": %F{blue}%~%f"
-  if [[ -n "$vcs_info_msg_0_" ]]; then
-    prompt_str+="$vcs_info_msg_0_"
-  fi
   PROMPT="%B$prompt_str%b %(?..%F{red})%(!.#.$)%f "
-  RPROMPT="%B$vcs_info_msg_1_%b"
+
+  vcs_info
+  RPROMPT="%B$vcs_info_msg_0_%b"
 }
 
 add-zsh-hook precmd update_prompt
@@ -94,7 +91,7 @@ alias la='ls -A'
 alias ll='ls -lh'
 alias lla='ls -lAh'
 alias grep='grep --color=auto'
-unalias run-help
+alias run-help | grep -q 'run-help' && unalias run-help
 
 ## key bindings
 autoload -Uz run-help run-help-git run-help-sudo run-help openssl
