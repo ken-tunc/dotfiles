@@ -10,11 +10,11 @@ path=(
   "$HOME/.local/bin"
   /usr/local/opt/python/libexec/bin
   "$JAVA_HOME/bin"
+  "$(npm prefix -g)/bin"
   $path
   "$(python3 -c 'import site; print(site.getuserbase())')/bin"
   "$GEM_HOME/bin"
   "$GOPATH/bin"
-  "$(npm prefix -g)/bin"
 )
 fpath=(
   "/usr/local/share/zsh-completions"
