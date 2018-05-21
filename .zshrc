@@ -86,7 +86,7 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit
 
-## aliases
+## aliases and functions
 alias la='ls -A'
 alias ll='ls -lh'
 alias lla='ls -lAh'
@@ -96,12 +96,13 @@ alias fgrep='fgrep --color=auto'
 alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias run-help | grep -q 'run-help' && unalias run-help
+autoload -Uz run-help run-help-git run-help-sudo run-help-openssl
+autoload -Uz edit-command-line
+autoload -Uz cd-worktree
 
 ## key bindings
-autoload -Uz run-help run-help-git run-help-sudo run-help openssl
-autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey -e
-bindkey -e \
+bindkey \
   '^P' history-beginning-search-backward \
   '^N' history-beginning-search-forward
 bindkey -M menuselect '^[[Z' reverse-menu-complete
@@ -110,7 +111,7 @@ if [[ -x /usr/local/bin/fzf ]]; then
   autoload -Uz fzf-cd-widget && zle -N fzf-cd-widget
   autoload -Uz fzf-file-widget && zle -N fzf-file-widget
   autoload -Uz fzf-history-widget && zle -N fzf-history-widget
-  bindkey -e \
+  bindkey \
     '^O' fzf-cd-widget \
     '^X^F' fzf-file-widget \
     '^X^R' fzf-history-widget
@@ -120,7 +121,6 @@ fi
 ## misc
 setopt no_clobber
 setopt no_flow_control
-autoload -Uz cd-worktree
 
 # Apple Terminal
 if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
