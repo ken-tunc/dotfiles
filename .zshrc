@@ -91,6 +91,10 @@ alias la='ls -A'
 alias ll='ls -lh'
 alias lla='ls -lAh'
 alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias qlook='qlmanage -p'
+alias sudoedit='sudo -e'
 alias run-help | grep -q 'run-help' && unalias run-help
 
 ## key bindings
