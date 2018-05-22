@@ -53,6 +53,9 @@ update_prompt() {
 
   vcs_info
   RPROMPT="%B$vcs_info_msg_0_%b"
+
+  # reset terminal title
+  [[ -z "$TMUX" ]] && print -Pn "\e]0;\a"
 }
 
 add-zsh-hook precmd update_prompt
