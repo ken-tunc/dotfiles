@@ -1,8 +1,5 @@
 """ Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
@@ -13,7 +10,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
+Plug 'Valloric/YouCompleteMe',
+      \ { 'do': './install.py --clang-completer --js-completer' }
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 call plug#end()
 
@@ -22,14 +20,20 @@ if !has('nvim')
 endif
 
 """ Edit
+set encoding=utf-8
+set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
+set fileformats=unix,dos,mac
+set backspace=indent,eol,start
 set expandtab
+set smarttab
 set shiftwidth=2
 set softtabstop=2
 set autoindent
-set backspace=indent,eol,start
-set encoding=utf-8
+set copyindent
+set preserveindent
 
 """ UI
+set display=lastline
 set laststatus=2
 set lazyredraw
 set mouse=a
@@ -39,7 +43,7 @@ set showcmd
 set showmatch
 set ruler
 set wildmenu
-if has('nvim')
+if exists('+inccommand')
   set inccommand=split
 endif
 if $TERM =~ ".*-256color"
@@ -75,9 +79,6 @@ cnoremap <C-n> <Down>
 """ Filetype recognition
 let g:tex_flavor = 'latex'
 
-""" vim-javacomplete2
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 """ vim-airline
 let g:airline_theme = 'minimalist'
 
@@ -85,3 +86,5 @@ let g:airline_theme = 'minimalist'
 let g:ycm_key_invoke_completion = ''
 let g:ycm_key_list_select_completion = []
 let g:ycm_key_list_previous_completion = []
+let g:ycm_global_ycm_extra_conf =
+      \ '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
