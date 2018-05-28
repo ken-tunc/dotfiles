@@ -1,6 +1,15 @@
 # vim:set et sw=2 ts=8 ft=zsh:
 
-local cmd="command mdfind kind:folder -onlyin . 2>/dev/null"
+local cmd
+if command -v fd >/dev/null 2>&1; then
+  cmd="command fd --type directory --follow --hidden --no-ignore \
+    --no-ignore-vcs --threads $(sysctl -n hw.ncpu) . 2> /dev/null"
+else
+  cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' \
+    -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) \
+    -prune -o -type d -print 2> /dev/null | cut -b3-"
+fi
+
 setopt localoptions pipefail 2> /dev/null
 local dir="$(eval "$cmd" | fzf-tmux +m --reverse --height 40%)"
 if [[ -z "$dir" ]]; then
