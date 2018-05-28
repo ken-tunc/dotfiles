@@ -100,14 +100,15 @@ alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias run-help >/dev/null 2>&1 && unalias run-help
 autoload -Uz run-help run-help-git run-help-sudo run-help-openssl
-autoload -Uz edit-command-line
 autoload -Uz cd-worktree
 
 ## key bindings
+autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey -e
 bindkey \
   '^P' history-beginning-search-backward \
-  '^N' history-beginning-search-forward
+  '^N' history-beginning-search-forward \
+  '^V' edit-command-line
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 if [[ -x /usr/local/bin/fzf ]]; then
