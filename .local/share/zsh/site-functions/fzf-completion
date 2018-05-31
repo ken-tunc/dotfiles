@@ -2,6 +2,10 @@
 
 local tokens cmd prefix trigger tail matches lbuf d_cmds fallback
 setopt localoptions noshwordsplit noksh_arrays noposixbuiltins
+autoload -Uz _fzf_path_completion _fzf_dir_completion
+for func in $(echo ${^fpath}/_fzf_complete*(N)); do
+  autoload -Uz $(basename "$func")
+done
 
 # http://zsh.sourceforge.net/FAQ/zshfaq03.html
 # http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion-Flags
@@ -25,14 +29,11 @@ if [ ${#tokens} -gt 1 -a "$tail" = "$trigger" ]; then
   [ -z "$trigger"      ] && prefix=${tokens[-1]} || prefix=${tokens[-1]:0:-${#trigger}}
   [ -z "${tokens[-1]}" ] && lbuf=$LBUFFER        || lbuf=${LBUFFER:0:-${#tokens[-1]}}
 
-  if [[ -n "$(echo ${^fpath}/_fzf_complete_${cmd}(N))" ]]; then
-    autoload -Uz _fzf_complete_${cmd}
+  if eval "type _fzf_complete_${cmd} > /dev/null"; then
     eval "prefix=\"$prefix\" _fzf_complete_${cmd} \"$lbuf\""
   elif [ ${d_cmds[(i)$cmd]} -le ${#d_cmds} ]; then
-    autoload -Uz _fzf_dir_completion
     _fzf_dir_completion "$prefix" "$lbuf"
   else
-    autoload -Uz _fzf_path_completion
     _fzf_path_completion "$prefix" "$lbuf"
   fi
 # Fall back to default completion

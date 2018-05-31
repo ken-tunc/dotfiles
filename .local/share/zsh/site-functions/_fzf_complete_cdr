@@ -1,7 +1,7 @@
 # vim:set et sw=2 ts=8 ft=zsh:
 
+autoload -Uz chpwd_recent_filehandler
 local -a reply
-autoload -Uz _fzf_complete chpwd_recent_filehandler
 chpwd_recent_filehandler $reply
 
 _fzf_complete "" "$@" < <(
