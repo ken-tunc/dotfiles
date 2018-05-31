@@ -2,7 +2,7 @@
 
 local cmd
 if command -v fd >/dev/null 2>&1; then
-  cmd="command fd --type file --follow --hidden --no-ignore --no-ignore-vcs \
+  cmd="command fd --type file --follow --hidden --no-ignore-vcs \
     --threads $(sysctl -n hw.ncpu) . 2> /dev/null"
 else
   cmd="command find -L .  \\( -path '*/\\.*' -o -fstype 'devfs' \

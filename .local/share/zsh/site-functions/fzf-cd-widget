@@ -2,8 +2,8 @@
 
 local cmd
 if command -v fd >/dev/null 2>&1; then
-  cmd="command fd --type directory --follow --hidden --no-ignore \
-    --no-ignore-vcs --threads $(sysctl -n hw.ncpu) . 2> /dev/null"
+  cmd="command fd --type directory --follow --hidden --no-ignore-vcs \
+    --threads $(sysctl -n hw.ncpu) . 2> /dev/null"
 else
   cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' \
     -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) \
