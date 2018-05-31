@@ -115,11 +115,12 @@ if [[ -x /usr/local/bin/fzf ]]; then
   autoload -Uz fzf-cd-widget && zle -N fzf-cd-widget
   autoload -Uz fzf-file-widget && zle -N fzf-file-widget
   autoload -Uz fzf-history-widget && zle -N fzf-history-widget
+  autoload -Uz fzf-completion && zle -N fzf-completion
   bindkey \
     '^O' fzf-cd-widget \
+    '^I' fzf-completion \
     '^X^F' fzf-file-widget \
     '^X^R' fzf-history-widget
-  source /usr/local/opt/fzf/shell/completion.zsh
 fi
 
 ## misc

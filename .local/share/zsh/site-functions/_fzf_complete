@@ -1,0 +1,29 @@
+# vim:set et sw=2 ts=8 ft=zsh:
+
+if ! declare -f _fzf_feed_fifo > /dev/null; then
+  _fzf_feed_fifo() {
+    command rm -f "$1"
+    mkfifo "$1"
+    (cat <&0 > "$1" &)
+  }
+fi
+
+local fifo fzf_opts lbuf fzf matches post
+fifo="${TMPDIR:-/tmp/}fzf-complete-fifo-$$"
+fzf_opts=$1
+lbuf=$2
+post="${funcstack[2]}_post"
+if [[ -z "$(echo ${^fpath}/$post(N))" ]]; then
+  post=cat
+else
+  autoload -Uz $post
+fi
+
+_fzf_feed_fifo "$fifo"
+matches=$(cat "$fifo" | fzf-tmux --height 40% --reverse ${=fzf_opts} -q "${(Q)prefix}" | $post | tr '\n' ' ')
+if [ -n "$matches" ]; then
+  LBUFFER="$lbuf$matches"
+fi
+zle redisplay
+typeset -f zle-line-init >/dev/null && zle zle-line-init
+command rm -f "$fifo"

@@ -1,0 +1,6 @@
+# vim:set et sw=2 ts=8 ft=zsh:
+
+autoload -Uz _fzf_complete
+_fzf_complete '+m' "$@" < <(
+  alias | sed 's/=.*//'
+)

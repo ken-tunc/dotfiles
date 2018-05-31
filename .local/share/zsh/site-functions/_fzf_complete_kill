@@ -1,0 +1,8 @@
+# vim:set et sw=2 ts=8 ft=zsh:
+
+matches=$(command ps -ef | sed 1d | fzf-tmux --height 50% --min-height 15 --reverse --preview 'echo {}' --preview-window down:3:wrap -m | awk '{print $2}' | tr '\n' ' ')
+if [ -n "$matches" ]; then
+  LBUFFER="$1$matches"
+fi
+zle redisplay
+typeset -f zle-line-init >/dev/null && zle zle-line-init
