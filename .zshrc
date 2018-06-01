@@ -4,6 +4,7 @@ autoload -Uz add-zsh-hook
 export CLICOLOR=1
 export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
 export GPG_TTY="$(tty)"
+export LC_ALL="$LANG"
 
 typeset -U path
 path=(
