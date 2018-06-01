@@ -110,19 +110,19 @@ autoload -Uz cd-worktree
 autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey -e
 bindkey \
-  '^P' history-beginning-search-backward \
-  '^N' history-beginning-search-forward \
-  '^V' edit-command-line
+  "^P" history-beginning-search-backward \
+  "^N" history-beginning-search-forward \
+  '^[!' edit-command-line
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
-if [[ -x /usr/local/bin/fzf ]]; then
+if command -v fzf >/dev/null 2>&1; then
   autoload -Uz fzf-cd-widget && zle -N fzf-cd-widget
   autoload -Uz fzf-file-widget && zle -N fzf-file-widget
   autoload -Uz fzf-history-widget && zle -N fzf-history-widget
   autoload -Uz fzf-completion && zle -N fzf-completion
   bindkey \
-    '^O' fzf-cd-widget \
     '^I' fzf-completion \
+    '^[j' fzf-cd-widget \
     '^X^F' fzf-file-widget \
     '^X^R' fzf-history-widget
 fi
