@@ -1,9 +1,0 @@
-# vim:set et sw=2 ts=8 ft=zsh:
-
-autoload -Uz chpwd_recent_filehandler
-local -a reply
-chpwd_recent_filehandler $reply
-
-_fzf_complete "" "$@" < <(
-  echo "$(for line in $reply; do echo $line; done)"
-)

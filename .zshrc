@@ -19,7 +19,6 @@ path=(
 )
 fpath=(
   "/usr/local/share/zsh-completions"
-  "$HOME/.local/share/zsh/site-functions"
   $fpath
 )
 
@@ -105,7 +104,6 @@ alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias run-help >/dev/null 2>&1 && unalias run-help
 autoload -Uz run-help run-help-git run-help-sudo run-help-openssl
-autoload -Uz cd-worktree
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
@@ -117,10 +115,7 @@ bindkey \
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 if command -v fzf >/dev/null 2>&1; then
-  autoload -Uz fzf-cd-widget && zle -N fzf-cd-widget
-  autoload -Uz fzf-file-widget && zle -N fzf-file-widget
-  autoload -Uz fzf-history-widget && zle -N fzf-history-widget
-  autoload -Uz fzf-completion && zle -N fzf-completion
+  source ~/.local/opt/fzf.zsh/init.zsh
   bindkey \
     '^I' fzf-completion \
     '^[j' fzf-cd-widget \

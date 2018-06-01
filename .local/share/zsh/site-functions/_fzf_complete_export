@@ -1,5 +1,0 @@
-# vim:set et sw=2 ts=8 ft=zsh:
-
-_fzf_complete '-m' "$@" < <(
-  declare -xp | sed 's/=.*//' | sed 's/.* //'
-)

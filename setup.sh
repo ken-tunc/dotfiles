@@ -5,6 +5,8 @@ DOTFILE_DIR="$(cd "$(dirname $0)" && pwd)"
 main() {
   cd "$DOTFILE_DIR"
 
+  git submodule update --init --remote
+
   setup_gpg
   setup_shell
   setup_tex
@@ -37,7 +39,7 @@ setup_shell() {
   install_symlink ".bash_profile"
   install_symlink ".bashrc"
   install_symlink ".inputrc"
-  install_symlink ".local/share/zsh/site-functions"
+  install_symlink ".local/opt"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
 }
