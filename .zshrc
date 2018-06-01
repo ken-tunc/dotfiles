@@ -89,6 +89,10 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit
 
+if command -v pipenv >/dev/null 2>&1; then
+  eval "$(pipenv --completion)"
+fi
+
 ## aliases and functions
 alias la='ls -A'
 alias ll='ls -lh'
