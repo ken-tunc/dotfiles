@@ -17,10 +17,7 @@ path=(
   "$GEM_HOME/bin"
   "$GOPATH/bin"
 )
-fpath=(
-  "/usr/local/share/zsh-completions"
-  $fpath
-)
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 ## directories
 setopt auto_pushd
@@ -73,7 +70,9 @@ setopt hist_reduce_blanks
 setopt share_history
 
 ## completion
+setopt always_to_end
 setopt auto_menu
+setopt complete_in_word
 setopt correct
 setopt list_packed
 setopt magic_equal_subst
@@ -133,6 +132,8 @@ fi
 ## misc
 setopt no_clobber
 setopt no_flow_control
+autoload -Uz select-word-style && select-word-style bash
+autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
 
 # Apple Terminal
 if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
