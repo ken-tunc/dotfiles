@@ -111,16 +111,23 @@ bindkey -e
 bindkey \
   "^P" history-beginning-search-backward \
   "^N" history-beginning-search-forward \
-  '^[!' edit-command-line
-bindkey -M menuselect '^[[Z' reverse-menu-complete
+  '^[e' edit-command-line
+bindkey -M menuselect \
+  '^B' backward-char \
+  '^F' forward-char \
+  '^P' up-line-or-history\
+  '^N' down-line-or-history \
+  '^J' accept-and-menu-complete \
+  '^?' undo \
+  '^[[Z' reverse-menu-complete
 
 if command -v fzf >/dev/null 2>&1; then
   source ~/.local/opt/fzf.zsh/init.zsh
   bindkey \
     '^I' fzf-completion \
     '^[j' fzf-cd-widget \
-    '^X^F' fzf-file-widget \
-    '^X^R' fzf-history-widget
+    '^[i' fzf-file-widget \
+    '^[r' fzf-history-widget
 fi
 
 ## misc
