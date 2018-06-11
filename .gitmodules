@@ -1,3 +1,3 @@
-[submodule ".local/opt/fzf.zsh"]
-	path = .local/opt/fzf.zsh
+[submodule "home/.local/opt/fzf.zsh"]
+	path = home/.local/opt/fzf.zsh
 	url = git@github.com:ken-tunc/fzf.zsh.git
