@@ -40,7 +40,6 @@ setup_shell() {
 }
 
 setup_vim() {
-  install_symlink ".config/nvim"
   install_symlink ".vim"
 
   # Install vim-plug
@@ -78,12 +77,9 @@ setup_misc() {
 
 install_deps() {
   brew update && brew install \
-    cmake \
-    ctags \
     docker-completion \
     fd \
     fzf \
-    node \
     reattach-to-user-namespace \
     zsh-completions \
     zsh-syntax-highlighting

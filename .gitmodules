@@ -1,3 +1,6 @@
 [submodule "home/.local/opt/fzf.zsh"]
 	path = home/.local/opt/fzf.zsh
 	url = git@github.com:ken-tunc/fzf.zsh.git
+[submodule "home/.vim/pack/molokai/opt/molokai"]
+	path = home/.vim/pack/molokai/opt/molokai
+	url = https://github.com/tomasr/molokai.git
