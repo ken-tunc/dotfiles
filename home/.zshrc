@@ -10,10 +10,9 @@ typeset -U path
 path=(
   "$HOME/.local/bin"
   /usr/local/opt/python/libexec/bin
-  "$JAVA_HOME/bin"
   "$(npm prefix -g)/bin"
   $path
-  "$(python3 -c 'import site; print(site.getuserbase())')/bin"
+  "$(python3 -m site --user-base)/bin"
   "$GEM_HOME/bin"
   "$GOPATH/bin"
 )
@@ -87,12 +86,11 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' recent-dirs-insert fallback
 zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit
 
-if command -v pipenv >/dev/null 2>&1; then
+if command -v pipenv > /dev/null 2>&1; then
   eval "$(pipenv --completion > /dev/null 2>&1)"
 fi
 
@@ -115,7 +113,7 @@ bindkey -e
 bindkey \
   "^P" history-beginning-search-backward \
   "^N" history-beginning-search-forward \
-  '^[e' edit-command-line
+  '^X^E' edit-command-line
 bindkey -M menuselect \
   '^B' backward-char \
   '^F' forward-char \
@@ -130,8 +128,8 @@ if command -v fzf > /dev/null 2>&1; then
   bindkey \
     '^I' fzf-completion \
     '^[j' fzf-cd-widget \
-    '^[i' fzf-file-widget \
-    '^[r' fzf-history-widget
+    '^X/' fzf-file-widget \
+    '^X^R' fzf-history-widget
 fi
 
 ## misc
