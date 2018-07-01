@@ -35,16 +35,13 @@ setup_shell() {
   install_symlink ".bashrc"
   install_symlink ".inputrc"
   install_symlink ".local/opt"
+  install_symlink ".local/share/zsh/site-functions"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
 }
 
 setup_vim() {
   install_symlink ".vim"
-
-  # Install vim-plug
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   # Override system vim
   local mvim_dir=/usr/local/bin

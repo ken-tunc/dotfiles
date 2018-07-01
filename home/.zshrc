@@ -17,7 +17,11 @@ path=(
   "$GEM_HOME/bin"
   "$GOPATH/bin"
 )
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(
+  /usr/local/share/zsh-completions
+  ~/.local/share/zsh/site-functions
+  $fpath
+)
 
 ## directories
 setopt auto_pushd
@@ -89,7 +93,7 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 autoload -Uz compinit && compinit
 
 if command -v pipenv >/dev/null 2>&1; then
-  eval "$(pipenv --completion)"
+  eval "$(pipenv --completion > /dev/null 2>&1)"
 fi
 
 ## aliases and functions
@@ -101,8 +105,9 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
-alias run-help >/dev/null 2>&1 && unalias run-help
+alias run-help > /dev/null 2>&1 && unalias run-help
 autoload -Uz run-help run-help-git run-help-sudo run-help-openssl
+autoload -Uz pyenv
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
@@ -120,7 +125,7 @@ bindkey -M menuselect \
   '^?' undo \
   '^[[Z' reverse-menu-complete
 
-if command -v fzf >/dev/null 2>&1; then
+if command -v fzf > /dev/null 2>&1; then
   source ~/.local/opt/fzf.zsh/init.zsh
   bindkey \
     '^I' fzf-completion \
