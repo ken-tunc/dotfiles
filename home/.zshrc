@@ -4,7 +4,6 @@ autoload -Uz add-zsh-hook
 export CLICOLOR=1
 export GEM_HOME="$(/usr/local/bin/ruby -e 'print Gem.user_dir')"
 export GPG_TTY="$(tty)"
-export LC_ALL="$LANG"
 
 typeset -U path
 path=(
@@ -91,7 +90,7 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 autoload -Uz compinit && compinit
 
 if command -v pipenv > /dev/null 2>&1; then
-  eval "$(pipenv --completion > /dev/null 2>&1)"
+  eval "$(pipenv --completion)"
 fi
 
 ## aliases and functions
