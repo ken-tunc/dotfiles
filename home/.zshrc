@@ -9,9 +9,9 @@ typeset -U path
 path=(
   "$HOME/.local/bin"
   /usr/local/opt/python/libexec/bin
-  "$(npm prefix -g)/bin"
+  "$(/usr/local/bin/npm prefix -g)/bin"
   $path
-  "$(python3 -m site --user-base)/bin"
+  "$(/usr/local/bin/python3 -m site --user-base)/bin"
   "$GEM_HOME/bin"
   "$GOPATH/bin"
 )
