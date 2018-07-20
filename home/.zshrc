@@ -104,7 +104,7 @@ alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias run-help > /dev/null 2>&1 && unalias run-help
 autoload -Uz run-help run-help-git run-help-sudo run-help-openssl
-autoload -Uz pyenv
+autoload -Uz fuck pyenv
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
