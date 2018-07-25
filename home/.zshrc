@@ -136,6 +136,7 @@ setopt no_clobber
 setopt no_flow_control
 autoload -Uz select-word-style && select-word-style bash
 autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
+autoload -Uz bracketed-paste-magic && zle -N bracketed-paste bracketed-paste-magic
 autoload -Uz zrecompile && zrecompile -q -p -R ~/.zshrc -- -M ~/.zcompdump
 
 # Apple Terminal
