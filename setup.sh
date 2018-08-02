@@ -9,10 +9,15 @@ main() {
 
   setup_gpg
   setup_shell
-  setup_vim
   setup_misc
 
-  install_deps
+  brew update && brew install \
+    docker-completion \
+    fd \
+    fzf \
+    reattach-to-user-namespace \
+    zsh-completions \
+    zsh-syntax-highlighting
 }
 
 setup_gpg() {
@@ -31,8 +36,6 @@ setup_gpg() {
 }
 
 setup_shell() {
-  install_symlink ".bash_profile"
-  install_symlink ".bashrc"
   install_symlink ".inputrc"
   install_symlink ".local/opt/fzf.zsh"
   install_symlink ".local/share/zsh/site-functions"
@@ -40,48 +43,18 @@ setup_shell() {
   install_symlink ".zshrc"
 }
 
-setup_vim() {
-  install_symlink ".vim"
-
-  # Override system vim
-  local mvim_dir=/usr/local/bin
-  pushd "$mvim_dir" > /dev/null
-  for cmd in vi vim vimdiff view vimex; do
-    if [[ -x "$mvim_dir/mvim" ]]; then
-      ln -s mvim $cmd
-    else
-      [[ -L "$cmd" ]] && rm "$cmd"
-    fi
-  done
-  popd > /dev/null
-}
-
 setup_misc() {
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
   install_symlink ".config/latexmk/latexmkrc"
-  install_symlink ".ideavimrc"
   install_symlink ".npmrc"
-  install_symlink ".screenrc"
-  install_symlink ".tern-config"
   install_symlink ".tmux.conf"
+  install_symlink ".vim"
   install_symlink "Library/Application Support/Code/User/locale.json"
   install_symlink "Library/Application Support/Code/User/settings.json"
 
   # vscode
   chmod 700 ~/Library/Application\ Support/Code
-}
-
-install_deps() {
-  brew update && brew install \
-    docker-completion \
-    fd \
-    fzf \
-    reattach-to-user-namespace \
-    zsh-completions \
-    zsh-syntax-highlighting
-
-  vim +PlugUpdate +qall
 }
 
 install_symlink() {
