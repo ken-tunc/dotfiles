@@ -1,7 +1,7 @@
 [user]
 	name = ken_tunc
 	email = tunc.adfuisses.53@gmail.com
-	signingkey = 05A1DAA8F25D0114
+	signingkey = 0xBB01CBBDCAFA9AD3
 [merge]
 	tool = vimdiff
 [commit]
