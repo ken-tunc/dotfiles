@@ -124,6 +124,7 @@ bindkey -M menuselect \
 
 if command -v fzf > /dev/null 2>&1; then
   source ~/.local/opt/fzf.zsh/init.zsh
+  export FZF_DEFAULT_OPTS='--height 40%'
   bindkey \
     '^I' fzf-completion \
     '^[j' fzf-cd-widget \
