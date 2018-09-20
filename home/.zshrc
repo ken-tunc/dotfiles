@@ -48,7 +48,7 @@ update_prompt() {
     prompt_str+="@%m"
   fi
   prompt_str+=": %F{blue}%~%f"
-  PROMPT="%B$prompt_str%b %(?..%F{red})%(!.#.$)%f "
+  PROMPT="%B$prompt_str%b %(!.#.$) "
 
   vcs_info
   RPROMPT="%B$vcs_info_msg_0_%b"
