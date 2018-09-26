@@ -87,7 +87,7 @@ zstyle ':completion:*' recent-dirs-insert fallback
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:*:docker:*' option-stacking yes
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -C
 
 if command -v pipenv > /dev/null 2>&1; then
   eval "$(pipenv --completion)"
