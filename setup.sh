@@ -46,7 +46,6 @@ setup_misc() {
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
   install_symlink ".config/latexmk/latexmkrc"
-  install_symlink ".npmrc"
   install_symlink ".tmux.conf"
   install_symlink ".vim"
   install_symlink "Library/Application Support/Code/User/locale.json"
