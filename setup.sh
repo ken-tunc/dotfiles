@@ -38,7 +38,6 @@ setup_gpg() {
 setup_shell() {
   install_symlink ".inputrc"
   install_symlink ".local/opt/fzf.zsh"
-  install_symlink ".local/share/zsh/site-functions"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
 }

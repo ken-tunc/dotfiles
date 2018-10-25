@@ -7,13 +7,13 @@ export GPG_TTY="$(tty)"
 
 typeset -U path
 path=(
-  "$HOME/.local/bin"
+  ~/.local/bin
   /usr/local/opt/python/libexec/bin
   "$(/usr/local/bin/npm prefix -g)/bin"
   $path
   "$(/usr/local/bin/python3 -m site --user-base)/bin"
   "$GEM_HOME/bin"
-  "$GOPATH/bin"
+  "$(/usr/local/bin/go env GOPATH)/bin"
 )
 fpath=(
   /usr/local/share/zsh-completions
@@ -104,7 +104,6 @@ alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias run-help > /dev/null 2>&1 && unalias run-help
 autoload -Uz run-help run-help-git run-help-sudo run-help-openssl
-autoload -Uz fuck pyenv
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
