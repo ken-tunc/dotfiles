@@ -94,7 +94,7 @@ if command -v pip > /dev/null 2>&1; then
 fi
 
 if command -v pipenv > /dev/null 2>&1; then
-  eval "$(pipenv --completion)"
+  eval "$(pipenv --completion | sed -e 's/compinit$/compinit -C/')"
 fi
 
 ## aliases and functions
