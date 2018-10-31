@@ -7,8 +7,8 @@
 [commit]
 	gpgsign = true
 [pager]
-	log =  [ -x /usr/local/share/git-core/contrib/diff-highlight/diff-highlight ] && /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER || $PAGER
-	show = [ -x /usr/local/share/git-core/contrib/diff-highlight/diff-highlight ] && /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER || $PAGER
-	diff = [ -x /usr/local/share/git-core/contrib/diff-highlight/diff-highlight ] && /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER || $PAGER
+	log =  /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
+	show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
+	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
 [credential]
 	helper = osxkeychain
