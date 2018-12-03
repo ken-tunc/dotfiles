@@ -143,8 +143,7 @@ setopt no_flow_control
 autoload -Uz select-word-style && select-word-style bash
 autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
 autoload -Uz bracketed-paste-magic && zle -N bracketed-paste bracketed-paste-magic
-autoload -Uz zrecompile && \
-  zrecompile -t && zrecompile -q -p -R ~/.zshrc -- -M ~/.zcompdump
+autoload -Uz zrecompile && zrecompile -q -p -R ~/.zshrc -- -M ~/.zcompdump
 
 # Apple Terminal
 if [[ "$TERM_PROGRAM" = "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
