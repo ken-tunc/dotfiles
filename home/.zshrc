@@ -99,6 +99,7 @@ if command -v pipenv > /dev/null 2>&1; then
 fi
 
 ## aliases and functions
+alias cp='cp -c'
 alias la='ls -A'
 alias ll='ls -lh'
 alias lla='ls -lAh'
