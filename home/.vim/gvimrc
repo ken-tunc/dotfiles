@@ -6,5 +6,5 @@ set guifont=Monaco:h13
 set guioptions-=r
 set guioptions-=L
 set confirm
-set transparency=15
+set transparency=50
 colorscheme molokai
