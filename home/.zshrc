@@ -43,12 +43,16 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}[unstaged]%f"
 zstyle ':vcs_info:git:*' check-for-changes true
 
 update_prompt() {
-  local prompt_str="%n"
+  local host cwd
+
   if [[ -n "$SSH_CONNECTION" ]]; then
-    prompt_str+="@%m"
+    host="@%m"
+  else
+    host=""
   fi
-  prompt_str+=": %F{blue}%~%f"
-  PROMPT="%B$prompt_str%b %(!.#.$) "
+
+  cwd="%F{blue}%(5~|%-1~/…/%3~|%4~)%f"
+  PROMPT="%B%n$host: $cwd%b %(!.#.$) "
 
   vcs_info
   RPROMPT="%B$vcs_info_msg_0_%b"
@@ -106,7 +110,6 @@ alias lla='ls -lAh'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias qlook='qlmanage -p'
 alias sudoedit='sudo -e'
 alias run-help > /dev/null 2>&1 && unalias run-help
 autoload -Uz run-help run-help-git run-help-sudo run-help-openssl
