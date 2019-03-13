@@ -93,15 +93,6 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit -C
 
-# python cli tools
-if command -v pip > /dev/null 2>&1; then
-  eval "$(pip completion --zsh)"
-fi
-
-if command -v pipenv > /dev/null 2>&1; then
-  eval "$(pipenv --completion | sed -e 's/compinit$/compinit -C/')"
-fi
-
 ## aliases and functions
 alias cp='cp -c'
 alias la='ls -A'
