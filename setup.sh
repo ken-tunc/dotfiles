@@ -44,6 +44,8 @@ setup_shell() {
 }
 
 setup_misc() {
+  install_symlink ".config/fish/config.fish"
+  install_symlink ".config/fish/functions"
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
   install_symlink ".config/latexmk/latexmkrc"
