@@ -15,7 +15,7 @@ if status --is-interactive
   set -x GPG_TTY (tty)
   set -x JAVA_HOME (/usr/libexec/java_home)
 
-  set -x PATH \
+  set PATH \
     ~/.local/bin \
     /usr/local/opt/python/libexec/bin \
     $JAVA_HOME/bin \
@@ -23,6 +23,7 @@ if status --is-interactive
     (/usr/local/bin/python3 -m site --user-base)/bin \
     $GEM_HOME/bin \
     (/usr/local/bin/go env GOPATH)/bin
+  set -x PATH (string match -v . $PATH)
 
   if type -q fd
     set -x FZF_DEFAULT_COMMAND command "fd --type file --follow --hidden --no-ignore-vcs . 2> /dev/null"
