@@ -1,12 +1,10 @@
-if status --is-login
-  set -x COPYFILE_DISABLE 1
-  set -x EDITOR vim
-  set -x LANG en_US.UTF-8
-  set -x LESS iMR
-  set -x PAGER less
+set -x COPYFILE_DISABLE 1
+set -x EDITOR vim
+set -x LANG en_US.UTF-8
+set -x LESS iMR
+set -x PAGER less
 
-  set -x GOPATH ~/.go
-end
+set -x GOPATH ~/.go
 
 if status --is-interactive
   set fish_greeting
@@ -23,7 +21,7 @@ if status --is-interactive
     (/usr/local/bin/python3 -m site --user-base)/bin \
     $GEM_HOME/bin \
     (/usr/local/bin/go env GOPATH)/bin
-  set -x PATH (string match -v . $PATH)
+  set -x PATH (string match -v \. $PATH)
 
   if type -q fd
     set -x FZF_DEFAULT_COMMAND command "fd --type file --follow --hidden --no-ignore-vcs . 2> /dev/null"
