@@ -1,1 +1,1 @@
-/Users/ken/Documents/dotfiles/home/.config/fish/functions/fzf_key_bindings.fish
+/usr/local/opt/fzf/shell/key-bindings.fish
