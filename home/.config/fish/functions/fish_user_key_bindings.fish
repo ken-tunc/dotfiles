@@ -1,3 +1,1 @@
-function fish_user_key_bindings
-  fzf_key_bindings
-end
+/Users/ken/Documents/dotfiles/home/.config/fish/functions/fish_user_key_bindings.fish

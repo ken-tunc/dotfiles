@@ -1,31 +1,23 @@
-set -x COPYFILE_DISABLE 1
-set -x EDITOR vim
-set -x LANG en_US.UTF-8
-set -x LESS iMR
-set -x PAGER less
+set --export COPYFILE_DISABLE 1
+set --export EDITOR vim
+set --export LANG en_US.UTF-8
+set --export LESS iMR
+set --export PAGER less
 
-set -x GOPATH ~/.go
+set --export GOPATH ~/.go
 
 if status --is-interactive
   set fish_greeting
-  set -x CLICOLOR 1
-  set -x GEM_HOME (/usr/local/bin/ruby -e 'print Gem.user_dir')
-  set -x GPG_TTY (tty)
-  set -x JAVA_HOME (/usr/libexec/java_home)
+  set --export CLICOLOR 1
+  set --export GEM_HOME (/usr/local/bin/ruby -e 'print Gem.user_dir')
+  set --export GPG_TTY (tty)
 
   set PATH \
     ~/.local/bin \
     /usr/local/opt/python/libexec/bin \
-    $JAVA_HOME/bin \
+    /usr/local/sbin \
     $PATH \
     (/usr/local/bin/python3 -m site --user-base)/bin \
     $GEM_HOME/bin \
     (/usr/local/bin/go env GOPATH)/bin
-  set -x PATH (string match -v \. $PATH)
-
-  if type -q fd
-    set -x FZF_DEFAULT_COMMAND command "fd --type file --follow --hidden --no-ignore-vcs . 2> /dev/null"
-    set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-    set -x FZF_ALT_C_COMMAND command "fd --type directory --follow --hidden --no-ignore-vcs \$dir 2> /dev/null"
-  end
 end
