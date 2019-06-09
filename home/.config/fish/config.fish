@@ -8,7 +8,6 @@ set --export GOPATH ~/.go
 
 if status --is-interactive
   set fish_greeting
-  set --export CLICOLOR 1
   set --export GEM_HOME (/usr/local/bin/ruby -e 'print Gem.user_dir')
   set --export GPG_TTY (tty)
 
