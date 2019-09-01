@@ -14,6 +14,8 @@ main() {
   install_symlink ".config/git/ignore"
   install_symlink ".tmux.conf"
   install_symlink ".vim"
+  install_symlink ".zshenv"
+  install_symlink ".zshrc"
 
   # Setup GnuPG
   if [[ ! -d ~/.gnupg ]]; then
