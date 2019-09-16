@@ -9,6 +9,8 @@ typeset -U path
 path=(
   ~/.local/bin
   /usr/local/opt/python/libexec/bin
+  /usr/local/opt/ruby/bin
+  /usr/local/sbin
   "$JAVA_HOME/bin"
   $path
   "$(python3 -m site --user-base)/bin"
