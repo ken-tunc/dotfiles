@@ -6,7 +6,3 @@
 	tool = vimdiff
 [commit]
 	gpgsign = true
-[pager]
-	log =  /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
-	show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
-	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
