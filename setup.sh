@@ -30,7 +30,6 @@ main() {
 
   install_symlink ".gnupg/gpg.conf"
   install_symlink ".gnupg/gpg-agent.conf"
-  install_symlink "Library/LaunchAgents/org.gnupg.gpg-agent.plist"
 }
 
 install_symlink() {
