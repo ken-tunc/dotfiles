@@ -17,6 +17,7 @@ path=(
   "$(python3 -m site --user-base)/bin"
   "$GEM_HOME/bin"
   "$(go env GOPATH)/bin"
+  "$(npm prefix -g)/bin"
 )
 fpath=(/usr/local/share/zsh-completions $fpath)
 

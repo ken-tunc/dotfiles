@@ -12,6 +12,7 @@ main() {
   install_symlink ".config/fish/functions/fzf_key_bindings.fish"
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
+  install_symlink ".npmrc"
   install_symlink ".tmux.conf"
   install_symlink ".vim"
   install_symlink ".zshenv"
