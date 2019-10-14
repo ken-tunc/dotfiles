@@ -5,4 +5,3 @@ export LESS='iMR'
 export PAGER='less'
 
 export GOPATH=~/.go
-export JAVA_HOME="$(/usr/libexec/java_home)"
