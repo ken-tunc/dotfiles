@@ -18,6 +18,10 @@ path=(
   "$GEM_HOME/bin"
   "$(go env GOPATH)/bin"
   "$(npm prefix -g)/bin"
+  # Android sdk CLI tools
+  "$ANDROID_SDK_ROOT/tools/bin"
+  "$ANDROID_SDK_ROOT/platform-tools"
+  "$ANDROID_SDK_ROOT/emulator"
 )
 fpath=(/usr/local/share/zsh-completions $fpath)
 
