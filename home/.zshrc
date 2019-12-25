@@ -101,8 +101,6 @@ alias la='ls -A'
 alias ll='ls -lh'
 alias lla='ls -lAh'
 alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
 alias run-help > /dev/null 2>&1 && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
 
