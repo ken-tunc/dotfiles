@@ -4,8 +4,7 @@ autoload -Uz add-zsh-hook
 export CLICOLOR=1
 export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
 export GPG_TTY="$(tty)"
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export LSCOLORS=gxfxcxdxbxegedabagacad
+export JAVA_HOME="$(/usr/libexec/java_home -v 11)"
 
 typeset -U path
 path=(
