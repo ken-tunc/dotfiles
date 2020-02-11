@@ -6,3 +6,6 @@
 	tool = vimdiff
 [commit]
 	gpgsign = true
+[ghq]
+	root = ~/.go/src
+	root = ~/Documents/src

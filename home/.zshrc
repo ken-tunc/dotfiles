@@ -23,7 +23,11 @@ path=(
   "$ANDROID_SDK_ROOT/platform-tools"
   "$ANDROID_SDK_ROOT/emulator"
 )
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(
+  /usr/local/share/zsh-completions
+  $fpath
+  ~/.local/share/zsh/site-functions
+)
 
 ## directories
 setopt auto_pushd
@@ -126,6 +130,10 @@ bindkey -M menuselect \
 if command -v fzf > /dev/null 2>&1; then
   [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+  # override fzf-cd-widget
+  autoload -Uz fzf-src && zle -N fzf-src
+  bindkey '\ec' fzf-src
 fi
 
 ## misc
