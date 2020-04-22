@@ -39,36 +39,6 @@ add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ":chpwd:*" recent-dirs-max 500
 zstyle ":chpwd:*" recent-dirs-default true
 
-## prompts
-setopt prompt_subst
-
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats '%F{green}(%b)%f%u%c'
-zstyle ':vcs_info:*' actionformats '%F{red}(%b|%a)%f%u%c' '%F{red}[%a]%f%u%c'
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}[staged]%f"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}[unstaged]%f"
-zstyle ':vcs_info:git:*' check-for-changes true
-
-update_prompt() {
-  local host cwd
-
-  host=""
-  if [[ -n "$SSH_CONNECTION" ]]; then
-    host="@%m"
-  fi
-
-  PROMPT="%B%n$host: %F{green}%1~%f %(?..%F{red}[%?]%f )%b%(!.#.$) "
-
-  vcs_info
-  RPROMPT="%B%~$vcs_info_msg_0_%b"
-
-  # reset terminal title
-  [[ -z "$TMUX" ]] && print -Pn "\e]0;\a"
-}
-
-add-zsh-hook precmd update_prompt
-
 ## history
 [[ -z $HISTFILE ]] && HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -151,3 +121,5 @@ if [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+# theme
+command -v starship > /dev/null 2>&1 && eval "$(starship init zsh)"

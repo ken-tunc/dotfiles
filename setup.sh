@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
+NO_DEPS=
 
 main() {
   cd "$DOTFILES_DIR"
@@ -12,12 +13,16 @@ main() {
   install_symlink ".config/fish/functions/fzf_key_bindings.fish"
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
+  install_symlink ".config/iterm2"
+  install_symlink ".config/starship.toml"
   install_symlink ".local/share/zsh/site-functions"
   install_symlink ".npmrc"
   install_symlink ".tmux.conf"
   install_symlink ".vim"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
+
+  [[ -z "$NO_DEPS" ]] && install_deps
 
   # Setup GnuPG
   if [[ ! -d ~/.gnupg ]]; then
@@ -39,5 +44,46 @@ install_symlink() {
 
   ln -snf "$DOTFILES_DIR/home/$1" "$HOME/$1"
 }
+
+install_deps() {
+  echo "Install dependencies..."
+
+  brew update && brew install \
+    fzf \
+    ghq \
+    gnupg \
+    go \
+    node \
+    pinentry-mac \
+    python \
+    starship \
+    zsh-autosuggestions \
+    zsh-completions \
+    zsh-syntax-highlighting
+
+  brew tap homebrew/cask-fonts && brew cask install \
+    font-fira-code \
+    iterm2
+}
+
+print_usage() {
+  cat << EOF
+  usage: $0 [options]
+
+  options:
+    -h, --help  Print help messages.
+    --no-deps   Setup without installing dependencies.
+EOF
+
+  exit
+}
+
+for opt in "$@"; do
+  case "$opt" in
+    -h|--help) print_usage ;;
+    --no-deps) NO_DEPS=1 ;;
+    *) ;;
+  esac
+done
 
 main
