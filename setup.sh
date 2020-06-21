@@ -8,6 +8,7 @@ main() {
 
   git submodule update --init --remote
 
+  install_symlink ".clang-format"
   install_symlink ".config/fish/config.fish"
   install_symlink ".config/fish/functions/fish_user_key_bindings.fish"
   install_symlink ".config/fish/functions/fzf_key_bindings.fish"
