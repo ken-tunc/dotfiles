@@ -100,10 +100,10 @@ bindkey -M menuselect \
 if command -v fzf > /dev/null 2>&1; then
   [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+  export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 
-  # override fzf-cd-widget
   autoload -Uz fzf-src && zle -N fzf-src
-  bindkey '\ec' fzf-src
+  bindkey '\ej' fzf-src
 fi
 
 ## misc
