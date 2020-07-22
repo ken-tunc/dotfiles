@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
+DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
 NO_DEPS=
 
 main() {
@@ -48,23 +49,7 @@ install_symlink() {
 
 install_deps() {
   echo "Install dependencies..."
-
-  brew update && brew install \
-    fzf \
-    ghq \
-    gnupg \
-    go \
-    node \
-    pinentry-mac \
-    python \
-    starship \
-    zsh-autosuggestions \
-    zsh-completions \
-    zsh-syntax-highlighting
-
-  brew tap homebrew/cask-fonts && brew cask install \
-    font-fira-code \
-    iterm2
+  brew update && brew bundle --file "$SCRIPT_DIR/Brewfile" --no-lock
 }
 
 print_usage() {
