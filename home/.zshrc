@@ -70,7 +70,7 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit -C
 
-# generate from --help output if no other completion is defined
+# generate completions from --help output if no other completion is defined
 compdef _gnu_generic -default-
 
 ## aliases and functions
@@ -79,7 +79,7 @@ alias la='ls -A'
 alias ll='ls -lh'
 alias lla='ls -lAh'
 alias grep='grep --color=auto'
-alias run-help > /dev/null 2>&1 && unalias run-help
+alias run-help &> /dev/null && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
 
 ## key bindings
@@ -98,7 +98,7 @@ bindkey -M menuselect \
   '^?' undo \
   '^[[Z' reverse-menu-complete
 
-if command -v fzf > /dev/null 2>&1; then
+if type fzf &> /dev/null; then
   [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
@@ -123,4 +123,4 @@ if [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
 fi
 
 # theme
-command -v starship > /dev/null 2>&1 && eval "$(starship init zsh)"
+type starship &> /dev/null && eval "$(starship init zsh)"
