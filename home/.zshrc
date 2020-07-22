@@ -9,6 +9,7 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 typeset -U path
 path=(
   ~/.local/bin
+  ~/.local/libexec
   /usr/local/opt/python/libexec/bin
   /usr/local/opt/ruby/bin
   /usr/local/sbin
