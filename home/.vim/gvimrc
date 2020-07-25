@@ -2,7 +2,7 @@ set lines=40
 set columns=120
 set colorcolumn=80
 set cursorline
-set guifont=Monaco:h13
+set guifont=Monaco:h12
 set guioptions-=r
 set guioptions-=L
 set confirm
