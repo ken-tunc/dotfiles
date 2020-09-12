@@ -70,6 +70,8 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit -C
 
+[[ "$commands[kubectl]" ]] && source <(kubectl completion zsh)
+
 # generate completions from --help output if no other completion is defined
 compdef _gnu_generic -default-
 
@@ -98,7 +100,7 @@ bindkey -M menuselect \
   '^?' undo \
   '^[[Z' reverse-menu-complete
 
-if type fzf &> /dev/null; then
+if [[ "$commands[fzf]" ]]; then
   [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
@@ -123,4 +125,4 @@ if [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
 fi
 
 # theme
-type starship &> /dev/null && eval "$(starship init zsh)"
+[[ "$commands[starship]" ]] && eval "$(starship init zsh)"
