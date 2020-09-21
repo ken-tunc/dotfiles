@@ -24,6 +24,7 @@ path=(
   "$ANDROID_SDK_ROOT/platform-tools"
   "$ANDROID_SDK_ROOT/emulator"
 )
+
 fpath=(
   /usr/local/share/zsh-completions
   $fpath
@@ -70,7 +71,9 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit -C
 
+# third party tools
 [[ "$commands[kubectl]" ]] && source <(kubectl completion zsh)
+[[ "$commands[gh]" ]] && eval "$(gh completion --shell zsh)"
 
 # generate completions from --help output if no other completion is defined
 compdef _gnu_generic -default-
