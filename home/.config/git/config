@@ -11,3 +11,7 @@
 	root = ~/Documents/src
 [pull]
 	rebase = false
+[pager]
+	log =  /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
+	show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
+	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
