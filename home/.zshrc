@@ -86,7 +86,7 @@ alias lla='ls -lAh'
 alias grep='grep --color=auto'
 alias run-help &> /dev/null && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
-autoload -Uz imgcat
+autoload -Uz imgcat pyenv
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line

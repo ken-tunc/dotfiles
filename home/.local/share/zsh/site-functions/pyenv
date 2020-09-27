@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+if [[ ! "$commands[pyenv]" ]]; then
+  echo "pyenv not found." >&2
+  return 1
+fi
+
+unset -f pyenv
+export PYENV_ROOT="$(command pyenv root)"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+eval "$(command pyenv init -)"
+pyenv "$@"
