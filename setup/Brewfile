@@ -1,6 +1,7 @@
 brew "fzf"
 brew "ghq"
 brew "git"
+brew "git-delta"
 brew "gnupg"
 brew "go"
 brew "node"

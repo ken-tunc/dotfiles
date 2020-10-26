@@ -2,6 +2,8 @@
 	name = ken_tunc
 	email = tunc.adfuisses.53@gmail.com
 	signingkey = 0xBB01CBBDCAFA9AD3
+[core]
+	pager = delta
 [merge]
 	tool = vimdiff
 [commit]
@@ -11,7 +13,12 @@
 	root = ~/Documents/src
 [pull]
 	rebase = false
-[pager]
-	log =  /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
-	show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
-	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | $PAGER
+[init]
+	defaultBranch = main
+[delta]
+	syntax-theme = Monokai Extended
+	line-numbers = true
+	side-by-side = true
+
+[interactive]
+	diffFilter = delta --color-only
