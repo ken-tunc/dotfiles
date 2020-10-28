@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
-SETUP_DIR="$DOTFILES_DIR/setup"
+BREWFILE="$DOTFILES_DIR/Brewfile"
 
 main() {
   local no_deps=0
@@ -61,7 +61,7 @@ setup_gpg() {
 
 install_deps() {
   echo "Install dependencies..."
-  brew update && brew bundle --file "$SETUP_DIR/Brewfile" --no-lock
+  brew update && brew bundle --file "$BREWFILE" --no-lock
 }
 
 install_symlink() {
