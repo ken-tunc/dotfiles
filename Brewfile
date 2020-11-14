@@ -13,5 +13,6 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 
+tap "homebrew/cask-fonts"
 cask "font-fira-code"
 cask "iterm2"
