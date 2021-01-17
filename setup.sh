@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
-BREWFILE="$DOTFILES_DIR/Brewfile"
+MACOS_DIR="$DOTFILES_DIR/macOS"
 
 main() {
   local no_deps=0
@@ -26,6 +26,7 @@ main() {
 
   setup_main
   setup_gpg
+  setup_terminal_app
 }
 
 setup_main() {
@@ -59,9 +60,22 @@ setup_gpg() {
   install_symlink ".gnupg/gpg-agent.conf"
 }
 
+setup_terminal_app() {
+  local term_profile="Pro_Customized"
+  local plist_path="$HOME/Library/Preferences/com.apple.Terminal.plist"
+
+  if [[ "$(defaults read com.apple.terminal 'Default Window Settings')" != "$term_profile" ]]; then
+    grep -q "$term_profile" "$plist_path" || open "$MACOS_DIR/$term_profile.terminal"
+
+    defaults write com.apple.Terminal "Default Window Settings" -string "$term_profile"
+    defaults write com.apple.Terminal "Startup Window Settings" -string "$term_profile"
+    defaults import com.apple.Terminal "$plist_path"
+  fi
+}
+
 install_deps() {
   echo "Install dependencies..."
-  brew update && brew bundle --file "$BREWFILE" --no-lock
+  brew update && brew bundle --file "$MACOS_DIR/Brewfile" --no-lock
 }
 
 install_symlink() {
