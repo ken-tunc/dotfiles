@@ -2,7 +2,6 @@ autoload -Uz add-zsh-hook
 
 ## environment variables
 export CLICOLOR=1
-export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
 export GPG_TTY="$(tty)"
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
@@ -11,12 +10,10 @@ path=(
   ~/.local/bin
   ~/.local/libexec
   /usr/local/opt/python@3/libexec/bin
-  /usr/local/opt/ruby/bin
   /usr/local/sbin
   "$JAVA_HOME/bin"
   $path
   "$(python3 -m site --user-base)/bin"
-  "$GEM_HOME/bin"
   "$(go env GOPATH)/bin"
   "$(npm prefix -g)/bin"
   # Android sdk CLI tools
