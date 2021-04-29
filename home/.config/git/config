@@ -20,3 +20,5 @@
 	line-numbers = true
 [interactive]
 	diffFilter = delta --color-only
+[mergetool]
+	keepBackup = false
