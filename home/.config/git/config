@@ -18,7 +18,5 @@
 [delta]
 	syntax-theme = Monokai Extended
 	line-numbers = true
-	side-by-side = true
-
 [interactive]
 	diffFilter = delta --color-only
