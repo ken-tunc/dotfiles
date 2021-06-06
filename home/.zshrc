@@ -107,6 +107,7 @@ if [[ "$commands[fzf]" ]]; then
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 
+  autoload -Uz cd-submodule cd-worktree
   autoload -Uz fzf-src && zle -N fzf-src
   bindkey '\ej' fzf-src
 fi
