@@ -1,28 +1,15 @@
 #!/bin/bash
 
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
-MACOS_DIR="$DOTFILES_DIR/macOS"
+readonly DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
+readonly MACOS_DIR="$DOTFILES_DIR/macOS"
+
+NO_DEPS=0
 
 main() {
-  local no_deps=0
-
-  for opt in "$@"; do
-    case "$opt" in
-      -h|--help)
-        print_usage
-        ;;
-      --no-deps)
-        no_deps=1
-        shift 1
-        ;;
-      *) ;;
-    esac
-  done
-
   cd "$DOTFILES_DIR"
   git submodule update --init --remote
 
-  [[ "$no_deps" = 1 ]] || install_deps
+  [[ "$NO_DEPS" = 1 ]] || install_deps
 
   setup_main
   setup_gpg
@@ -97,4 +84,17 @@ EOF
   exit
 }
 
-main "$@"
+for opt in "$@"; do
+  case "$opt" in
+    -h|--help)
+      print_usage
+      ;;
+    --no-deps)
+      NO_DEPS=1
+      shift 1
+      ;;
+    *) ;;
+  esac
+done
+
+main
