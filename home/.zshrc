@@ -35,8 +35,8 @@ setopt pushd_minus
 
 autoload -Uz chpwd_recent_dirs cdr
 add-zsh-hook chpwd chpwd_recent_dirs
-zstyle ":chpwd:*" recent-dirs-max 500
-zstyle ":chpwd:*" recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-max 500
+zstyle ':chpwd:*' recent-dirs-default true
 
 ## history
 [[ -z $HISTFILE ]] && HISTFILE=~/.zsh_history
@@ -92,8 +92,8 @@ autoload -Uz imgcat pyenv
 autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey -e
 bindkey \
-  "^P" history-beginning-search-backward \
-  "^N" history-beginning-search-forward \
+  '^P' history-beginning-search-backward \
+  '^N' history-beginning-search-forward \
   '^X^E' edit-command-line
 bindkey -M menuselect \
   '^B' backward-char \
