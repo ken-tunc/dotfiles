@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-local repo="$(ghq list | fzf-tmux --reverse)"
+local repo="$(ghq list | fzf-tmux ${(Q)${(Z+n+)FZF_TMUX_OPTS}})"
 if [[ -n "$repo" ]]; then
   repo="$(ghq list --full-path --exact $repo)"
   BUFFER="cd ${repo}"

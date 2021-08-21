@@ -9,7 +9,6 @@
 [commit]
 	gpgsign = true
 [ghq]
-	root = ~/.go/src
 	root = ~/Documents/src
 [pull]
 	rebase = false

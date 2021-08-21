@@ -108,6 +108,7 @@ if [[ "$commands[fzf]" ]]; then
   [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+  export FZF_TMUX_OPTS="-p 85%,85%"
 
   autoload -Uz cd-submodule cd-worktree
   autoload -Uz fzf-src && zle -N fzf-src
