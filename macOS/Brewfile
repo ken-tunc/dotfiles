@@ -1,3 +1,4 @@
+breq "bat"
 brew "fzf"
 brew "ghq"
 brew "git"
