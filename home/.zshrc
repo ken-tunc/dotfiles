@@ -113,6 +113,7 @@ if [[ "$commands[fzf]" ]]; then
   autoload -Uz cd-submodule cd-worktree
   autoload -Uz fzf-src && zle -N fzf-src
   bindkey '\ej' fzf-src
+  alias fzf-tmux='fzf-tmux ${(Q)${(Z+n+)FZF_TMUX_OPTS}}'
 fi
 
 ## misc
