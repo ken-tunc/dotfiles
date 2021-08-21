@@ -1,3 +1,3 @@
-[submodule "home/.vim/pack/molokai/opt/molokai"]
-	path = home/.vim/pack/molokai/opt/molokai
-	url = https://github.com/tomasr/molokai.git
+[submodule "home/.vim/pack/theme/opt/vim-monokai-tasty"]
+	path = home/.vim/pack/theme/opt/vim-monokai-tasty
+	url = https://github.com/patstockwell/vim-monokai-tasty.git
