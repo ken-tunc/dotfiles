@@ -3,13 +3,13 @@
 readonly DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)"
 readonly MACOS_DIR="$DOTFILES_DIR/macOS"
 
-NO_DEPS=0
+NO_DEPS=
 
 main() {
   cd "$DOTFILES_DIR"
   git submodule update --init --remote
 
-  [[ "$NO_DEPS" = 1 ]] || install_deps
+  [[ -z "$NO_DEPS" ]] && install_deps
 
   setup_main
   setup_gpg
