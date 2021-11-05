@@ -15,6 +15,5 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 
 tap "homebrew/cask-fonts"
-cask "alacritty"
 cask "font-roboto-mono-for-powerline"
 cask "font-fira-code"
