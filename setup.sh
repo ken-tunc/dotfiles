@@ -25,6 +25,7 @@ setup_main() {
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
   install_symlink ".config/iterm2"
+  install_symlink ".config/kitty/kitty.conf"
   install_symlink ".config/starship.toml"
   install_symlink ".local/share/zsh/site-functions"
   install_symlink ".npmrc"
