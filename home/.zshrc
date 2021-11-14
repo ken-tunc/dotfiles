@@ -87,7 +87,7 @@ alias egrep='egrep --color=auto'
 alias sudoedit='sudo -e'
 alias run-help &> /dev/null && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
-autoload -Uz imgcat pyenv
+autoload -Uz conda imgcat pyenv
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
