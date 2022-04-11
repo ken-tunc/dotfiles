@@ -33,6 +33,7 @@ setup_main() {
   install_symlink ".vim"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
+  install_symlink "Library/Application Support/tabby/config.yaml"
 }
 
 setup_gpg() {
