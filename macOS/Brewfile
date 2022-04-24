@@ -15,4 +15,5 @@ brew "zsh-syntax-highlighting"
 
 tap "homebrew/cask-fonts"
 cask "font-jetbrains-mono-nerd-font"
+cask "alacritty"
 cask "kitty"
