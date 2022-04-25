@@ -23,8 +23,7 @@ set showmatch
 set ruler
 set wildmenu
 if $TERM =~ ".*-256color"
-  packadd! vim-monokai-tasty
-  colorscheme vim-monokai-tasty
+  packadd! sonokai
 endif
 
 """ Search
