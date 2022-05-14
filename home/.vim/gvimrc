@@ -7,4 +7,5 @@ set guioptions-=r
 set guioptions-=L
 set confirm
 set transparency=15
+packadd! sonokai
 colorscheme sonokai
