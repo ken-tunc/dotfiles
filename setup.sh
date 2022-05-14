@@ -25,6 +25,7 @@ setup_main() {
   install_symlink ".config/fish/functions/fzf_key_bindings.fish"
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
+  install_symlink ".config/ideavim/ideavimrc"
   install_symlink ".config/iterm2"
   install_symlink ".config/kitty/kitty.conf"
   install_symlink ".config/starship.toml"
