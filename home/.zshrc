@@ -10,7 +10,7 @@ typeset -U path
 path=(
   ~/.local/bin
   ~/.local/libexec
-  /usr/local/opt/python@3/libexec/bin
+  "$(brew --prefix)/opt/python@3/libexec/bin"
   /usr/local/sbin
   "$JAVA_HOME/bin"
   $path
@@ -24,7 +24,7 @@ path=(
 )
 
 fpath=(
-  /usr/local/share/zsh-completions
+  "$(brew --prefix)/share/zsh-completions"
   $fpath
   ~/.local/share/zsh/site-functions
 )
@@ -107,8 +107,8 @@ bindkey -M menuselect \
   '^[[Z' reverse-menu-complete
 
 if [[ "$commands[fzf]" ]]; then
-  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+  [[ $- == *i* ]] && source "$(brew --prefix)/opt/fzf/shell/completion.zsh" 2> /dev/null
+  source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
   export FZF_TMUX_OPTS="-p 85%,85%"
 
@@ -124,13 +124,13 @@ setopt no_flow_control
 autoload -Uz select-word-style && select-word-style bash
 
 # plugins
-if [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 fi
 
-if [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 # theme
