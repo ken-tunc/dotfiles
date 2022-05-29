@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+if [[ ! "$commands[asdf]" ]]; then
+  echo "asdf not found." >&2
+  return 1
+fi
+
+unset -f asdf
+
+source "$(brew --prefix asdf)/libexec/asdf.sh"
+
+asdf "$@"
