@@ -12,6 +12,7 @@ main() {
   [[ -z "$NO_DEPS" ]] && install_deps
 
   setup_main
+  setup_jdk
   setup_gpg
   setup_terminal_app
 }
@@ -36,6 +37,13 @@ setup_main() {
   install_symlink ".zshenv"
   install_symlink ".zshrc"
   install_symlink "Library/Application Support/tabby/config.yaml"
+}
+
+setup_jdk() {
+  local java_vms="$HOME/Library/Java/JavaVirtualMachines"
+  [[ -d "$java_vms" ]] || mkdir -p "$java_vms"
+
+  ln -s "$(brew --prefix openjdk@17)/libexec/openjdk.jdk" "$java_vms/openjdk-17.jdk"
 }
 
 setup_gpg() {

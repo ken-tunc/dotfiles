@@ -3,7 +3,7 @@ autoload -Uz add-zsh-hook
 ## environment variables
 export CLICOLOR=1
 export GPG_TTY="$(tty)"
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+export JAVA_HOME="$(/usr/libexec/java_home -v 17)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 typeset -U path
