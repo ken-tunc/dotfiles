@@ -10,13 +10,13 @@ typeset -U path
 path=(
   ~/.local/bin
   ~/.local/libexec
-  "$(brew --prefix)/opt/python@3/libexec/bin"
+  "$(brew --prefix python@3)/libexec/bin"
   /usr/local/sbin
   "$JAVA_HOME/bin"
   $path
   "$(python3 -m site --user-base)/bin"
   "$(go env GOPATH)/bin"
-  "$(npm prefix -g)/bin"
+  "$(npm prefix --location=global)/bin"
   # Android sdk CLI tools
   "$ANDROID_SDK_ROOT/tools/bin"
   "$ANDROID_SDK_ROOT/platform-tools"
@@ -107,8 +107,8 @@ bindkey -M menuselect \
   '^[[Z' reverse-menu-complete
 
 if [[ "$commands[fzf]" ]]; then
-  [[ $- == *i* ]] && source "$(brew --prefix)/opt/fzf/shell/completion.zsh" 2> /dev/null
-  source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
+  [[ $- == *i* ]] && source "$(brew --prefix fzf)/shell/completion.zsh" 2> /dev/null
+  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
   export FZF_TMUX_OPTS="-p 85%,85%"
 
