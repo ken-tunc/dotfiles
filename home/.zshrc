@@ -124,6 +124,9 @@ setopt no_clobber
 setopt no_flow_control
 autoload -Uz select-word-style && select-word-style bash
 
+# enable asdf in JetBrains-JediTerm
+[[ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]] && asdf > /dev/null 2>&1
+
 # plugins
 if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
