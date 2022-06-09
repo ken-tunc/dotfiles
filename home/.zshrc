@@ -69,12 +69,6 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 
 autoload -Uz compinit && compinit -C
 
-# third party tools
-[[ "$commands[hugo]" ]] && source <(hugo completion zsh)
-[[ "$commands[kubectl]" ]] && source <(kubectl completion zsh)
-[[ "$commands[skaffold]" ]] && source <(skaffold completion zsh)
-[[ "$commands[gh]" ]] && eval "$(gh completion --shell zsh)"
-
 # generate completions from --help output if no other completion is defined
 compdef _gnu_generic -default-
 
