@@ -34,6 +34,7 @@ setup_main() {
   install_symlink ".local/share/zsh/site-functions"
   install_symlink ".npmrc"
   install_symlink ".vim"
+  install_symlink ".zprofile"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
   install_symlink "Library/Application Support/tabby/config.yaml"
