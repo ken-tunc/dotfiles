@@ -25,6 +25,7 @@ path=(
 
 fpath=(
   "$(brew --prefix)/share/zsh-completions"
+  "$(brew --prefix)/share/zsh/site-functions"
   $fpath
   ~/.local/share/zsh/site-functions
 )
