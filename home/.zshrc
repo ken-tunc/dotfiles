@@ -56,7 +56,7 @@ zstyle ':completion:*' recent-dirs-insert fallback
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:*:docker:*' option-stacking yes
 
-autoload -Uz compinit && compinit -C
+autoload -Uz compinit && compinit -u
 
 # generate completions from --help output if no other completion is defined
 compdef _gnu_generic -default-
