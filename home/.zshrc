@@ -3,24 +3,12 @@ autoload -Uz add-zsh-hook
 ## environment variables
 export CLICOLOR=1
 export GPG_TTY="$(tty)"
-export JAVA_HOME="$(/usr/libexec/java_home -v 17)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 typeset -U path
 path=(
-  ~/.local/bin
   ~/.local/libexec
-  "$(brew --prefix python@3)/libexec/bin"
-  /usr/local/sbin
-  "$JAVA_HOME/bin"
   $path
-  "$(python3 -m site --user-base)/bin"
-  "$(go env GOPATH)/bin"
-  "$(npm prefix --location=global)/bin"
-  # Android sdk CLI tools
-  "$ANDROID_SDK_ROOT/tools/bin"
-  "$ANDROID_SDK_ROOT/platform-tools"
-  "$ANDROID_SDK_ROOT/emulator"
 )
 
 fpath=(
@@ -131,6 +119,9 @@ fi
 if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
+
+# direnv
+[[ "$commands[direnv]" ]] && eval "$(direnv hook zsh)"
 
 # theme
 [[ "$commands[starship]" ]] && eval "$(starship init zsh)"
