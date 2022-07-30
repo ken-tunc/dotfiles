@@ -72,7 +72,7 @@ alias egrep='egrep --color=auto'
 alias sudoedit='sudo -e'
 alias run-help &> /dev/null && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
-autoload -Uz asdf conda imgcat pyenv qlook
+autoload -Uz conda imgcat pyenv qlook
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
@@ -107,9 +107,6 @@ setopt no_clobber
 setopt no_flow_control
 autoload -Uz select-word-style && select-word-style bash
 
-# enable asdf in JetBrains-JediTerm
-[[ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]] && asdf > /dev/null 2>&1
-
 # plugins
 if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -119,6 +116,9 @@ fi
 if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
+
+# asdf
+[[ "$commands[asdf]" ]] && source "$(brew --prefix asdf)/libexec/asdf.sh"
 
 # direnv
 [[ "$commands[direnv]" ]] && eval "$(direnv hook zsh)"
