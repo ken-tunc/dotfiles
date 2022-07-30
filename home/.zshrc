@@ -9,6 +9,10 @@ typeset -U path
 path=(
   ~/.local/libexec
   $path
+  # Android sdk CLI tools
+  "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
+  "$ANDROID_SDK_ROOT/platform-tools"
+  "$ANDROID_SDK_ROOT/emulator"
 )
 
 fpath=(
