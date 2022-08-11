@@ -9,10 +9,6 @@ typeset -U path
 path=(
   ~/.local/libexec
   $path
-  # Android sdk CLI tools
-  "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
-  "$ANDROID_SDK_ROOT/platform-tools"
-  "$ANDROID_SDK_ROOT/emulator"
 )
 
 fpath=(
@@ -120,9 +116,6 @@ fi
 if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
-
-# asdf
-[[ "$commands[asdf]" ]] && source "$(brew --prefix asdf)/libexec/asdf.sh"
 
 # direnv
 [[ "$commands[direnv]" ]] && eval "$(direnv hook zsh)"

@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+## android
+layout_android() {
+  export ANDROID_SDK_ROOT=~/Library/Android/sdk
+  PATH_add "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
+  PATH_add "$ANDROID_SDK_ROOT/platform-tools"
+  PATH_add "$ANDROID_SDK_ROOT/emulator"
+}
+
+## asdf
+use_asdf() {
+  if has asdf; then
+    source "$(brew --prefix asdf)/libexec/asdf.sh"
+  else
+    echo '`asdf` command not found.' >&2
+  fi
+}
+
+## dart
+layout_dart() {
+  export PUB_CACHE="$(direnv_layout_dir)/dart"
+  PATH_add "$PUB_CACHE/bin"
+}
+
+## flutter
+layout_flutter() {
+  layout android
+  layout dart
+}
+
+## java
+use_java() {
+  local version="$1"
+  export JAVA_HOME="$(/usr/libexec/java_home -v "$version")"
+  load_prefix "$JAVA_HOME"
+}
+
