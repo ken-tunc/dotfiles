@@ -72,7 +72,7 @@ alias egrep='egrep --color=auto'
 alias sudoedit='sudo -e'
 alias run-help &> /dev/null && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
-autoload -Uz conda imgcat pyenv qlook
+autoload -Uz qlook
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
@@ -94,12 +94,10 @@ if [[ "$commands[fzf]" ]]; then
   [[ $- == *i* ]] && source "$(brew --prefix fzf)/shell/completion.zsh" 2> /dev/null
   source "$(brew --prefix fzf)/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
-  export FZF_TMUX_OPTS="-p 85%,85%"
 
   autoload -Uz cd-submodule cd-worktree
   autoload -Uz fzf-src && zle -N fzf-src
   bindkey '\ej' fzf-src
-  alias fzf-tmux='fzf-tmux ${(Q)${(Z+n+)FZF_TMUX_OPTS}}'
 fi
 
 ## misc
