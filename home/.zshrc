@@ -7,8 +7,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 typeset -U path
 path=(
-  ~/.local/libexec
+  ~/.local/bin
   $path
+  ~/Library/Application\ Support/JetBrains/Toolbox/scripts
 )
 
 fpath=(
