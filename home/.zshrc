@@ -98,7 +98,7 @@ if [[ "$commands[fzf]" ]]; then
 
   autoload -Uz cd-submodule cd-worktree
   autoload -Uz fzf-src && zle -N fzf-src
-  bindkey '\ej' fzf-src
+  bindkey '^]' fzf-src
 fi
 
 ## misc
