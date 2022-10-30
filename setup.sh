@@ -32,6 +32,7 @@ setup_main() {
   install_symlink ".config/kitty/kitty.conf"
   install_symlink ".config/starship.toml"
   install_symlink ".config/tmux/tmux.conf"
+  install_symlink ".fleet/settings.json"
   install_symlink ".local/share/zsh/site-functions"
   install_symlink ".npmrc"
   install_symlink ".vim"
