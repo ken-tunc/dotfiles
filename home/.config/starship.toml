@@ -1,1 +1,7 @@
 add_newline = false
+
+[custom.finch]
+description = "finch version"
+command = """finch info --format '{{json .ServerVersion}}' | sed 's/"//g'"""
+when = "finch info"
+symbol = "🐤 "
