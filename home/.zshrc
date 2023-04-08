@@ -10,6 +10,7 @@ path=(
   ~/.local/bin
   $path
   ~/Library/Application\ Support/JetBrains/Toolbox/scripts
+  "$GOPATH/bin"
 )
 
 fpath=(
