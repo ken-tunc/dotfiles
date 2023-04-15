@@ -22,9 +22,6 @@ set showcmd
 set showmatch
 set ruler
 set wildmenu
-if $TERM =~ ".*-256color"
-  packadd! sonokai
-endif
 
 """ Search
 set hlsearch
