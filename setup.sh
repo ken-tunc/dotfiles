@@ -15,6 +15,9 @@ main() {
   setup_jdk
   setup_gpg
   setup_terminal_app
+
+  # https://github.com/VSCodeVim/Vim#mac
+  defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 }
 
 setup_main() {
