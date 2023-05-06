@@ -13,7 +13,6 @@ main() {
 
   setup_main
   setup_jdk
-  setup_gpg
   setup_terminal_app
 
   # https://github.com/VSCodeVim/Vim#mac
@@ -50,20 +49,6 @@ setup_jdk() {
   [[ -d "$java_vms" ]] || mkdir -p "$java_vms"
 
   ln -s "$(brew --prefix openjdk@17)/libexec/openjdk.jdk" "$java_vms/openjdk-17.jdk"
-}
-
-setup_gpg() {
-  if [[ ! -d ~/.gnupg ]]; then
-    mkdir ~/.gnupg
-  fi
-  chmod 700 ~/.gnupg
-
-  chmod 700 "$DOTFILES_DIR/home/.gnupg"
-  chmod 600 "$DOTFILES_DIR/home/.gnupg/gpg.conf"
-  chmod 600 "$DOTFILES_DIR/home/.gnupg/gpg-agent.conf"
-
-  install_symlink ".gnupg/gpg.conf"
-  install_symlink ".gnupg/gpg-agent.conf"
 }
 
 setup_terminal_app() {

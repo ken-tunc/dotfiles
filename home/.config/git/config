@@ -1,7 +1,7 @@
 [user]
 	name = ken_tunc
 	email = tunc.adfuisses.53@gmail.com
-	signingkey = 0xBB01CBBDCAFA9AD3
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEMemdnMY90Kyt8/Zz2JMYgGScUQibo7jpKxokXcQ0eB
 [core]
 	pager = delta
 [merge]
@@ -26,3 +26,8 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+

@@ -4,6 +4,7 @@ autoload -Uz add-zsh-hook
 export CLICOLOR=1
 export GPG_TTY="$(tty)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 typeset -U path
 path=(
