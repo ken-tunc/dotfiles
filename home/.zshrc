@@ -73,6 +73,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias sudoedit='sudo -e'
+alias code='code-insiders'
 alias run-help &> /dev/null && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
 autoload -Uz qlook
