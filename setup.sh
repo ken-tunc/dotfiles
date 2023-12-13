@@ -31,6 +31,7 @@ setup_main() {
   install_symlink ".config/git/ignore"
   install_symlink ".config/ideavim/ideavimrc"
   install_symlink ".config/iterm2"
+  install_symlink ".config/karabiner/karabiner.json"
   install_symlink ".config/kitty/kitty.conf"
   install_symlink ".config/starship.toml"
   install_symlink ".config/tmux/tmux.conf"
