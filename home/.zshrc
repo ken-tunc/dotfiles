@@ -94,8 +94,7 @@ bindkey -M menuselect \
   '^[[Z' reverse-menu-complete
 
 if [[ "$commands[fzf]" ]]; then
-  [[ $- == *i* ]] && source "$(brew --prefix fzf)/shell/completion.zsh" 2> /dev/null
-  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+  eval "$(fzf --zsh)"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 
   autoload -Uz cd-submodule cd-worktree
