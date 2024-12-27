@@ -21,18 +21,17 @@ main() {
 
 setup_main() {
   install_symlink ".clang-format"
-  install_symlink ".config/alacritty/alacritty.yml"
   install_symlink ".config/bat/config"
   install_symlink ".config/direnv/direnvrc"
   install_symlink ".config/fish/config.fish"
   install_symlink ".config/fish/functions/fish_user_key_bindings.fish"
   install_symlink ".config/fish/functions/fzf_key_bindings.fish"
+  install_symlink ".config/ghostty/config"
   install_symlink ".config/git/config"
   install_symlink ".config/git/ignore"
   install_symlink ".config/ideavim/ideavimrc"
   install_symlink ".config/iterm2"
   install_symlink ".config/karabiner/karabiner.json"
-  install_symlink ".config/kitty/kitty.conf"
   install_symlink ".config/starship.toml"
   install_symlink ".config/tmux/tmux.conf"
   install_symlink ".fleet/settings.json"
@@ -42,7 +41,6 @@ setup_main() {
   install_symlink ".zprofile"
   install_symlink ".zshenv"
   install_symlink ".zshrc"
-  install_symlink "Library/Application Support/tabby/config.yaml"
 }
 
 setup_jdk() {

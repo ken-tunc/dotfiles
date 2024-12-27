@@ -1,6 +1,7 @@
 brew "bat"
 brew "direnv"
 brew "fzf"
+brew "ghostty"
 brew "ghq"
 brew "git"
 brew "git-delta"
@@ -14,5 +15,3 @@ brew "zsh-syntax-highlighting"
 
 tap "homebrew/cask-fonts"
 cask "font-jetbrains-mono-nerd-font"
-cask "alacritty"
-cask "kitty"
