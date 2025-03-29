@@ -11,7 +11,7 @@ layout_android() {
 ## asdf
 use_asdf() {
   if has asdf; then
-    source "$(brew --prefix asdf)/libexec/asdf.sh"
+    PATH_add "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
   else
     echo '`asdf` command not found.' >&2
   fi
