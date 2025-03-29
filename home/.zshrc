@@ -2,16 +2,13 @@ autoload -Uz add-zsh-hook
 
 ## environment variables
 export CLICOLOR=1
-export GPG_TTY="$(tty)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 typeset -U path
 path=(
   ~/.local/bin
   $path
   ~/Library/Application\ Support/JetBrains/Toolbox/scripts
-  "$GOPATH/bin"
 )
 
 fpath=(
@@ -76,6 +73,7 @@ alias sudoedit='sudo -e'
 alias run-help &> /dev/null && unalias run-help
 autoload -Uz run-help run-help-git run-help-openssl run-help-sudo
 autoload -Uz qlook
+[[ "$commands[gh]" ]] && eval "$(gh copilot alias -- zsh)"
 
 ## key bindings
 autoload -Uz edit-command-line && zle -N edit-command-line
