@@ -91,6 +91,12 @@ bindkey -M menuselect \
   '^?' undo \
   '^[[Z' reverse-menu-complete
 
+autoload -Uz expand-alias && zle -N expand-alias
+bindkey '^M' expand-alias
+
+alias gs='git status'
+alias k='kubectl'
+
 if [[ "$commands[fzf]" ]]; then
   eval "$(fzf --zsh)"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'

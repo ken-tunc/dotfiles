@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+local cur_cursor=$CURSOR
+local first_word=${LBUFFER%% *}
+local expanded=${aliases[$first_word]}
+
+if [[ -n $expanded ]]; then
+  # Replace the first word with its expansion
+  LBUFFER="${expanded}${LBUFFER#$first_word}"
+  # Adjust the cursor position accordingly
+  CURSOR=$(( cur_cursor + ${#expanded} - ${#first_word} ))
+fi
+
+# Remove any carriage return characters to avoid ^M in the history
+LBUFFER=${LBUFFER//$'\r'/}
+
+zle .accept-line
