@@ -104,6 +104,9 @@ if [[ "$commands[fzf]" ]]; then
   autoload -Uz cd-submodule cd-worktree
   autoload -Uz fzf-src && zle -N fzf-src
   bindkey '^]' fzf-src
+  autoload -Uz pet-select && zle -N pet-select
+  stty -ixon
+  bindkey '^s' pet-select
 fi
 
 ## misc
