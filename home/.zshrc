@@ -61,6 +61,8 @@ autoload -Uz compinit && compinit -u
 # generate completions from --help output if no other completion is defined
 compdef _gnu_generic -default-
 
+[[ "$command[codex]" ]] && codex completion zsh
+
 ## aliases and functions
 alias cp='cp -c'
 alias la='ls -A'
