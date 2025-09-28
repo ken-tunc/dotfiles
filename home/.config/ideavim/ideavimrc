@@ -1,0 +1,61 @@
+set matchit
+set clipboard=unnamedplus
+set incsearch
+set ignorecase
+set ideajoin
+
+let mapleader = "\<Space>"
+
+" ** 1. Navigations **
+" files ('f'ile)
+nnoremap <leader>fr <Action>(RecentFiles)
+nnoremap <leader>fb <Action>(FileStructurePopup)
+
+" code jump ('g'o)
+nnoremap gd <Action>(GotoDeclaration)
+nnoremap K <Action>(QuickDocumentation)
+nnoremap <leader>gi <Action>(GotoImplementation)
+nnoremap <leader>gu <Action>(ShowUsages)
+nnoremap <leader>gb <Action>(Back)
+nnoremap <leader>gf <Action>(Forward)
+
+" errors ('e'rror)
+nnoremap <leader>en <Action>(NextError)
+nnoremap <leader>ep <Action>(PreviousError)
+
+
+" ** 2. Code refactorings **
+" refactor ('r'efactor)
+nnoremap <leader>rr <Action>(RenameElement)
+nnoremap <leader>rv <Action>(ExtractVariable)
+nnoremap <leader>rm <Action>(ExtractMethod)
+nnoremap <leader>ri <Action>(Inline)
+
+" code ('c'ode)
+nnoremap = <Action>(ReformatCode)
+vnoremap = <Action>(ReformatCode)
+nnoremap <leader>co <Action>(OptimizeImports)
+nnoremap <leader>ca <Action>(ShowIntentionActions)
+
+
+" ** 3. Run / Debug **
+" build / run ('b'uild or 'r'un)
+nnoremap <leader>bb <Action>(BuildProject)
+nnoremap <leader>br <Action>(Run)
+nnoremap <leader>bd <Action>(Debug)
+nnoremap <leader>bt <Action>(RunContextConfiguration)
+
+
+" ** 4. Window / UI operations **
+" window ('w'indow)
+nnoremap <leader>wt <Action>(ActivateTerminalToolWindow)
+nnoremap <leader>wc <Action>(HideAllWindows)
+nnoremap <leader>wp <Action>(OpenProjectWindows)
+
+
+" ** 5. VCS **
+" VCS ('v'cs)
+nnoremap <leader>vs <Action>(Vcs.ShowMessageHistory)
+nnoremap <leader>vc <Action>(CheckinProject)
+nnoremap <leader>vp <Action>(Vcs.Push)
+nnoremap <leader>vg <Action>(Vcs.Operations)
