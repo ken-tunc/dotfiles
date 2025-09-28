@@ -59,3 +59,7 @@ nnoremap <leader>vs <Action>(Vcs.ShowMessageHistory)
 nnoremap <leader>vc <Action>(CheckinProject)
 nnoremap <leader>vp <Action>(Vcs.Push)
 nnoremap <leader>vg <Action>(Vcs.Operations)
+
+" ** 6. Others **
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
