@@ -36,3 +36,7 @@ use_java() {
   load_prefix "$JAVA_HOME"
 }
 
+## rust
+layout_rust() {
+  . "$HOME/.cargo/env"
+}
