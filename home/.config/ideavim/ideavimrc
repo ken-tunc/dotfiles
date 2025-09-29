@@ -1,4 +1,5 @@
 set matchit
+set surround
 set clipboard=unnamedplus
 set incsearch
 set ignorecase
