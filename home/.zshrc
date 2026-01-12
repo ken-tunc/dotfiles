@@ -67,8 +67,7 @@ if [[ "$commands[fzf]" ]]; then
   bindkey '^]' fzf-src
 fi
 
-# plubins
-
+# plugins
 if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
