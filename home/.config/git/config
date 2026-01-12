@@ -1,9 +1,7 @@
 [user]
 	name = ken_tunc
 	email = tunc.adfuisses.53@gmail.com
-	signingkey = /Users/ken/.ssh/id_ed25519.pub
-[core]
-	pager = delta
+	signingkey = ~/.ssh/id_ed25519.pub
 [merge]
 	tool = vimdiff
 [commit]
@@ -14,18 +12,8 @@
 	rebase = false
 [init]
 	defaultBranch = main
-[delta]
-	syntax-theme = Monokai Extended
-	line-numbers = true
-[interactive]
-	diffFilter = delta --color-only
 [mergetool]
 	keepBackup = false
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
 [gpg]
 	format = ssh
 [push]

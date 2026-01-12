@@ -1,12 +1,7 @@
 # global ignore
 .DS_Store
 
-# pyenv
-.python-version
-
 # direnv
 .envrc
 .direnv
 
-# vscode
-.vscode
