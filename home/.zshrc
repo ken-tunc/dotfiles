@@ -77,4 +77,5 @@ if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]
   source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
+[[ "$commands[direnv]" ]] && eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
