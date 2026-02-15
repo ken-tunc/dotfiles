@@ -63,9 +63,15 @@ if [[ "$commands[fzf]" ]]; then
   eval "$(fzf --zsh)"
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --select-1'
 
+  autoload -Uz cd-worktree
   autoload -Uz fzf-src && zle -N fzf-src
   bindkey '^]' fzf-src
 fi
+
+# misc
+setopt no_clobber
+setopt no_flow_control
+autoload -Uz select-word-style && select-word-style bash
 
 # plugins
 if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-CMD="command git worktree list 2>/dev/null"
-DIR="$(eval "$CMD" | fzf-tmux +m --reverse | awk '{print $1}')"
-if [[ -z "$DIR" ]]; then
-  exit 1
-fi
-
-cd "$DIR"
