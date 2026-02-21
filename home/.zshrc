@@ -6,6 +6,7 @@ export CLICOLOR=1
 typeset -U path
 path=(
   ~/.local/bin
+  ~/.cargo/bin
   $path
 )
 
