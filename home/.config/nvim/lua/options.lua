@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 -- Encoding
 opt.encoding = "utf-8"
@@ -40,4 +41,6 @@ for _, dir in ipairs({ opt.directory:get()[1], opt.backupdir:get()[1], opt.undod
 end
 
 -- netrw
-vim.g.netrw_liststyle = 3
+g.netrw_liststyle = 3
+g.netrw_winsize = 25
+g.netrw_browse_split = 4

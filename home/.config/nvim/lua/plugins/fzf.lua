@@ -6,6 +6,7 @@ return {
     { "<leader>fc", "<cmd>Commands<cr>", desc = "Commands" },
     { "<leader>ff", "<cmd>Files<cr>", desc = "Files" },
     { "<leader>fg", "<cmd>GFiles?<cr>", desc = "GFiles?" },
+    { "<leader>fm", "<cmd>Maps<cr>", desc = "Maps" },
     { "<leader>fw", "<cmd>Windows<cr>", desc = "Windows" },
   },
 }
