@@ -38,3 +38,6 @@ for _, dir in ipairs({ opt.directory:get()[1], opt.backupdir:get()[1], opt.undod
     vim.fn.mkdir(dir, "p")
   end
 end
+
+-- netrw
+vim.g.netrw_liststyle = 3
