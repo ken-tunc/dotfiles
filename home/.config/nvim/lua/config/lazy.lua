@@ -21,45 +21,4 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  {
-    "sainnhe/sonokai",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.opt.termguicolors = true
-      vim.g.sonokai_transparent_background = 1
-      vim.cmd.colorscheme("sonokai")
-    end,
-  },
-  {
-    "junegunn/fzf.vim",
-    dependencies = { { "junegunn/fzf", dir = vim.fn.expand("/opt/homebrew/opt/fzf") } },
-    keys = {
-      { "<leader>fb", "<cmd>Buffers<cr>", desc = "Buffers" },
-      { "<leader>fc", "<cmd>Commands<cr>", desc = "Commands" },
-      { "<leader>ff", "<cmd>Files<cr>", desc = "Files" },
-      { "<leader>fg", "<cmd>GFiles?<cr>", desc = "GFiles?" },
-      { "<leader>fw", "<cmd>Windows<cr>", desc = "Windows" },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate",
-  },
-  { "lewis6991/gitsigns.nvim", opts = {} },
-  {
-    "georgeguimaraes/review.nvim",
-    dependencies = {
-      "esmuellert/codediff.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    cmd = { "Review" },
-    keys = {
-      { "<leader>rr", "<cmd>Review<cr>", desc = "Review" },
-      { "<leader>rc", "<cmd>Review commits<cr>", desc = "Review commits" },
-    },
-    opts = {},
-  },
-})
+require("lazy").setup({ import = "plugins" })
