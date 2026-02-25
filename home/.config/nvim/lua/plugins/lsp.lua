@@ -6,10 +6,11 @@ return {
   },
   opts = {
     ensure_installed = {
-      "lua_ls",
       "gopls",
-      "ts_ls",
       "kotlin_lsp",
+      "lua_ls",
+      "pyright",
+      "ts_ls",
     },
   },
   config = function(_, opts)
