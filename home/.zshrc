@@ -7,7 +7,6 @@ typeset -U path
 path=(
   ~/.local/bin
   ~/.cargo/bin
-  ~/.go/bin
   $path
 )
 
