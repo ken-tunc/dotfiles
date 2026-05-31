@@ -9,4 +9,5 @@ return {
     { "<leader>fm", "<cmd>Maps<cr>", desc = "Maps" },
     { "<leader>fw", "<cmd>Windows<cr>", desc = "Windows" },
   },
+  lazy = false,
 }
