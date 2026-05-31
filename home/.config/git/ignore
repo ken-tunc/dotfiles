@@ -5,6 +5,8 @@
 .envrc
 .direnv
 
-
+# claude code
+.worktreeinclude
+CLAUDE.local.md
 **/.claude/settings.local.json
 **/.claude/worktrees
