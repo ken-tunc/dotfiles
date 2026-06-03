@@ -13,7 +13,6 @@ opt.shiftwidth = 2
 opt.softtabstop = 2
 
 -- UI
-opt.lazyredraw = true
 opt.mouse = "a"
 opt.number = true
 opt.showcmd = true
@@ -44,3 +43,10 @@ end
 g.netrw_liststyle = 3
 g.netrw_winsize = 25
 g.netrw_browse_split = 4
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true }),
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
